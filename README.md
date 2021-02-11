@@ -1,1 +1,1 @@
-# guitar-practice-assistant
+# Guitar Practice Assistant
