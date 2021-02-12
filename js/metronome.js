@@ -14,6 +14,8 @@ class Metronome {
   _bpm = 120;
   _metronomeActive = false;
   _loop;
+  _controlTimeout;
+  _timeoutMs = 200;
   _context = new (window.AudioContext || window.webkitAudioContext)();
 
   constructor() {
@@ -24,8 +26,12 @@ class Metronome {
       'click',
       this._startStopHandler.bind(this)
     );
-    controls.addEventListener('click', this._handleControls.bind(this));
     bpmNumberInput.addEventListener('change', this._handleSlider.bind(this));
+
+    //Control handlers, and control button hold handlers
+    controls.addEventListener('mousedown', this._handleControls.bind(this));
+    controls.addEventListener('mouseup', this._clearControlTimeout.bind(this));
+    controls.addEventListener('mouseout', this._clearControlTimeout.bind(this));
   }
   //BPM handler
   _handleBpm() {
@@ -33,10 +39,19 @@ class Metronome {
       bpmNumberInput.value = this._bpm;
       bpmNumberDisplay.textContent = this._bpm;
     }
-    this._setBpm();
-  }
-  _setBpm() {
     Tone.Transport.bpm.value = this._bpm;
+  }
+  _increaseBpm() {
+    this._bpm++;
+    this._handleBpm();
+  }
+  _decreaseBpm() {
+    this._bpm--;
+    this._handleBpm();
+  }
+  //To stop incrementing BPM on button hold
+  _clearControlTimeout() {
+    clearInterval(this._controlTimeout);
   }
   //Control handler
   _handleControls(e) {
@@ -44,12 +59,18 @@ class Metronome {
     if (!target) return;
 
     if (target.classList.contains('btn-plus')) {
-      this._bpm++;
-      this._handleBpm();
+      this._increaseBpm();
+      this._controlTimeout = setInterval(
+        this._increaseBpm.bind(this),
+        this._timeoutMs
+      );
     }
     if (target.classList.contains('btn-minus')) {
-      this._bpm--;
-      this._handleBpm();
+      this._decreaseBpm();
+      this._controlTimeout = setInterval(
+        this._decreaseBpm.bind(this),
+        this._timeoutMs
+      );
     }
   }
   //Handle range slider
@@ -62,14 +83,9 @@ class Metronome {
     //Loop with tone.js
     this._loop = new Tone.Loop(this._oscillator.bind(this), '4n');
 
-    //Set bpm
-    //Tone.Transport.bpm.value = this._bpm;
-
     //Start sound
     this._context.resume(); //Need it for autoplay policy
-
     Tone.start(); //Need it for autoplay policy, but for the tone.js library
-
     Tone.Transport.start();
     this._loop.start(0);
   }
