@@ -95,6 +95,7 @@ class App {
         `Title cannot be empty, and the minutes should be a number between 1-99`
       );
     };
+    //Set succes
     const setSuccess = (input) => {
       input.style.background = '#fff';
     };
@@ -114,7 +115,6 @@ class App {
       }
     };
 
-    //
     if (type === 'song' && checkInputs()) {
       practiceItem = new Song(title, duration);
     }
@@ -130,12 +130,11 @@ class App {
     this._practiceItems.push(practiceItem);
 
     //Add practice item to UI
-    this._addPracticeItem(practiceItem);
-    console.log(practiceItem);
+    this._renderPracticeItem(practiceItem);
     //Set local storage
     this._setLocalStorage();
   }
-  _addPracticeItem({ title, duration, type, id }) {
+  _renderPracticeItem({ title, duration, type, id }) {
     //converting duration to minutes and second
     const min = String(Math.trunc(duration / 60)).padStart(2, 0);
     const sec = String(duration % 60).padStart(2, 0);
@@ -150,7 +149,6 @@ class App {
             ? `<i class="fas fa-music"></i>`
             : `<i class="fas fa-dumbbell"></i>`
         }
-        
       </span>
       <span class="practice-item-time"
         >Time: <span class="practice-item-time-value">${min}:${sec}</span>
@@ -165,10 +163,12 @@ class App {
   </li>`;
     form.insertAdjacentHTML('afterend', html);
   }
+
+  //Handle clicks on practice items
   _clickHandler(e) {
     //Select list practice item
     this._targetListElement = e.target.closest('.list-practice-item');
-    if (this._targetListElement === null) return;
+    if (!this._targetListElement) return;
     this._durationTarget = this._targetListElement.querySelector(
       '.practice-item-time-value'
     );
@@ -195,6 +195,7 @@ class App {
       this._startStop();
     }
   }
+  //Start/stop button handler
   _startStop() {
     if (this._timerActive) {
       this._playBtn.innerHTML = `<i class="far fa-play-circle  fa-2x"></i>`;
@@ -205,6 +206,7 @@ class App {
     }
     this._timerActive = !this._timerActive;
   }
+  //Set practice item time
   _setTime() {
     this._currentDuration = true;
     this._itemDuration--;
@@ -214,15 +216,19 @@ class App {
 
     this._durationTarget.textContent = `${this._min}:${this._sec}`;
 
-    if (this._itemDuration === 0) {
-      clearInterval(this._timer);
-      // Disable practised item
-      this._targetListElement.style.opacity = `0.5`;
-      this._targetListElement.style.pointerEvents = `none`;
-      this._currentDuration = false;
-      this._timerActive = false;
-    }
+    //Make practice item disabled
+    if (this._itemDuration === 0) this._disablePracticeItem();
   }
+  //Disables practice item
+  _disablePracticeItem() {
+    clearInterval(this._timer);
+    // Disable practised item
+    this._targetListElement.style.opacity = `0.5`;
+    this._targetListElement.style.pointerEvents = `none`;
+    this._currentDuration = false;
+    this._timerActive = false;
+  }
+  //Delete practice item
   _deleteItem() {
     //remove from array
     this._itemIndex >= 0 && this._practiceItems.splice(this._itemIndex, 1);
@@ -239,29 +245,37 @@ class App {
       messageBox.style.top = '-50%';
     }, 2000);
   }
+  //Save practice items in Localstorage
   _setLocalStorage() {
     localStorage.setItem('practiceItems', JSON.stringify(this._practiceItems));
   }
+  //Get practice items from Localstorage
   _getLocalStorage() {
     const data = JSON.parse(localStorage.getItem('practiceItems'));
 
     if (!data) return;
 
     this._practiceItems = data;
-
-    this._practiceItems.forEach((item) => this._addPracticeItem(item));
+    //Render practice items to screen
+    this._practiceItems.forEach((item) => this._renderPracticeItem(item));
   }
+  //Menu tabs handler
   _handleMenuTabs(e) {
     const clicked = e.target.closest('.nav-tab');
     if (!clicked) return;
 
     const clickedId = clicked.id;
-    //Remove active from all other when clicked
+    //Remove active from all TABS when clicked
     tabs.forEach((tab) => tab.classList.remove('nav-active'));
-    //Add to the one clicked
+    //Add active to the clicked TAB
     clicked.classList.add('nav-active');
-    //Hide and show content
-    if (clickedId === 'home') {
+
+    //Show/hide content
+    this._contentHandler(clickedId);
+  }
+  //Hide and show content with menu tabs
+  _contentHandler(id) {
+    if (id === 'home') {
       metronomeContent.classList.add('hidden');
       homeContent.classList.remove('hidden');
     } else {
