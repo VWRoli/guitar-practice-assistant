@@ -14,7 +14,6 @@ class Metronome {
   _bpm = 120;
   _metronomeActive = false;
   _loop;
-  _synth;
   _context = new (window.AudioContext || window.webkitAudioContext)();
 
   constructor() {
@@ -34,6 +33,10 @@ class Metronome {
       bpmNumberInput.value = this._bpm;
       bpmNumberDisplay.textContent = this._bpm;
     }
+    this._setBpm();
+  }
+  _setBpm() {
+    Tone.Transport.bpm.value = this._bpm;
   }
   //Control handler
   _handleControls(e) {
@@ -60,10 +63,11 @@ class Metronome {
     this._loop = new Tone.Loop(this._oscillator.bind(this), '4n');
 
     //Set bpm
-    Tone.Transport.bpm.value = this._bpm;
+    //Tone.Transport.bpm.value = this._bpm;
 
     //Start sound
     this._context.resume(); //Need it for autoplay policy
+    Tone.start(); //Need it for autoplay policy, but for the tone.js library
     Tone.Transport.start();
     this._loop.start(0);
   }
