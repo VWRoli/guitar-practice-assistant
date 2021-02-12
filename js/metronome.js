@@ -67,7 +67,9 @@ class Metronome {
 
     //Start sound
     this._context.resume(); //Need it for autoplay policy
+
     Tone.start(); //Need it for autoplay policy, but for the tone.js library
+
     Tone.Transport.start();
     this._loop.start(0);
   }
