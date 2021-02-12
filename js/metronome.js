@@ -15,6 +15,7 @@ class Metronome {
   _metronomeActive = false;
   _loop;
   _synth;
+  _context = new (window.AudioContext || window.webkitAudioContext)();
 
   constructor() {
     this._handleBpm();
@@ -55,16 +56,12 @@ class Metronome {
   }
   //Start metronome
   _startMetronome() {
-    //Create Synth
-    this._synth = new Tone.Synth({
-      oscillator: { type: 'triangle' },
-      envelope: { attack: 0, decay: 0, sustain: 1.0, release: 0.9 },
-    }).toDestination();
-
-    this._loop = new Tone.Loop(this._sound.bind(this), '4n');
+    //Loop with tone.js
+    this._loop = new Tone.Loop(this._oscillator.bind(this), '4n');
 
     //Set bpm
     Tone.Transport.bpm.value = this._bpm;
+
     //Start sound
     Tone.Transport.start();
     this._loop.start(0);
@@ -85,8 +82,24 @@ class Metronome {
     this._metronomeActive = !this._metronomeActive;
   }
 
-  _sound(time) {
-    this._synth.triggerAttackRelease('A4', 0.03, time);
+  _oscillator(time) {
+    // Create an oscillator with Web Audio API
+    const osc = this._context.createOscillator();
+    const oscGain = this._context.createGain();
+
+    //Create metronome sound
+    osc.frequency.value = 880;
+    oscGain.gain.exponentialRampToValueAtTime(1, time + 0.01);
+
+    //Fixing speakers pluck sound issue
+    oscGain.gain.setValueAtTime(1, 0);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, time + 0.03);
+
+    osc.connect(oscGain);
+    oscGain.connect(this._context.destination);
+
+    osc.start(time);
+    osc.stop(time + 0.03);
   }
 }
 
