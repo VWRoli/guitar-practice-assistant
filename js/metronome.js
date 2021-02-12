@@ -63,6 +63,7 @@ class Metronome {
     Tone.Transport.bpm.value = this._bpm;
 
     //Start sound
+    this._context.resume(); //Need it for autoplay policy
     Tone.Transport.start();
     this._loop.start(0);
   }
