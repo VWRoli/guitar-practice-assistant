@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+:root {
+  --dark-clr: #08192c;
+  --dark2-clr: #0a193d;
+  --light-clr: #fff;
+  --light2-clr: #fefefb;
+  --accent-clr: #4285f4;
+  --hover-clr: #3573d6;
+
+  /* --blueColor: #4285f4;
+  --blueGradient: linear-gradient(to top right, #164eaf, #4285f4);
+  --yellowGradient: linear-gradient(to top left, #ffb003, #ffcb03);
+  --redGradient: linear-gradient(to top left, #e52a5a, #ff585f);
+  --songBorder: #8a3fcf;
+  --excerciseBorder: #ff4500;
+  --greenGradient: linear-gradient(to top left, #39b385, #9be15d); */
+}
+/*************? GLOBAL ******************/
+* {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none;
+}
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: var(--light2-clr);
+}
+a:hover {
+  color: var(--accent-clr);
+}
+p {
+  font-size: 1.15rem;
+  line-height: 1.5rem;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 1.5rem 0;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+
+.accent-clr {
+  color: var(--accent-clr);
+}
+.primary-btn {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  background-color: var(--accent-clr);
+  width: fit-content;
+  padding: 1.25rem 2rem;
+  border-radius: 25px;
+  transition: all 0.25s;
+}
+.primary-btn:hover {
+  color: var(--light2-clr);
+  background-color: var(--hover-clr);
+}
+/*************? NAVBAR ******************/
+.landing__nav-container {
+  background-color: var(--dark-clr);
+  color: var(--light2-clr);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 80px;
+}
+.logo,
+.logo span {
+  font-size: 2rem;
+}
+
+.landing__nav-center {
+  display: flex;
+}
+.landing__nav-center li,
+.landing__nav-account li {
+  font-size: 1.5rem;
+  margin: 1rem 2rem;
+}
+.landing__nav-center li a,
+.landing__nav-account li a {
+  font-size: 1.25rem;
+}
+.landing__nav-account {
+  display: flex;
+}
+
+/*************? HERO ******************/
+#landing__hero {
+  background-color: var(--dark2-clr);
+  display: flex;
+  justify-content: space-around;
+}
+.landing__hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--light2-clr);
+}
+
+.landing__hero-text h1 span {
+  font-size: 4rem;
+}
+.landing__hero-text p {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  margin: 1.5rem 0;
+}
+.landing__hero-img-wrapper {
+  position: relative;
+  max-width: 680px;
+  margin: 1.5rem;
+}
+.landing__hero-img-wrapper img {
+  border-radius: 25px;
+}
+.landing__hero-img-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background: linear-gradient(
+    to top right,
+    rgba(10, 25, 61, 0.9) 0%,
+    rgba(10, 25, 61, 0.5) 40%,
+    rgba(10, 25, 61, 0.5) 60%,
+    rgba(10, 25, 61, 0.9) 100%
+  );
+}
+/*************? OVERVIEW ******************/
+#landing__overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: var(--light2-clr);
+}
+/*************? CARDS ******************/
+.landing__card-container {
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  background: var(--light-clr);
+  border-radius: 25px;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.66);
+  margin: 1rem;
+  padding: 2rem;
+}
+.landing__card-container.card-reverse {
+  flex-direction: row-reverse;
+}
+.card-text-wrapper {
+  color: var(--dark-clr);
+  margin-right: 1rem;
+  max-width: 520px;
+}
+.card-img-wrapper {
+  margin-left: 1rem;
+  max-width: 480px;
+}
+.card-img-wrapper img {
+  border-radius: 25px;
+}
+/*************? ABOUT ******************/
+#landing__about {
+  background-color: var(--dark2-clr);
+  color: var(--light2-clr);
+  text-align: center;
+  padding: 3rem;
+}
+#landing__about h2 {
+  padding-top: 2rem;
+}
+#landing__about h3 {
+  margin: 3rem;
+}
+.landing__about-text {
+  width: 50vw;
+  margin: auto;
+}
+/*************? FOOTER ******************/
+#landing__footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--dark-clr);
+  color: var(--light2-clr);
+  padding: 2rem;
+}
+#landing__footer .logo {
+  margin: 0;
+}
