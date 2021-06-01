@@ -10,15 +10,21 @@ const handleToggle = () => {
 };
 burgerNav.addEventListener('click', handleToggle);
 
-//? Close drop down menu when an item clicked
+//? Smooth Scroll
+const smoothScroll = (e) => {
+  e.preventDefault();
+  const id = e.target.getAttribute('href');
+  const yOffset = -80;
+  const element = document.querySelector(id);
+  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+  window.scrollTo({ top: y, behavior: 'smooth' });
+};
+
 navLinkEl.forEach((link) =>
   link.addEventListener('click', function (e) {
     //? Smooth scrolling
-    e.preventDefault();
-    const id = e.target.getAttribute('href');
-    document
-      .querySelector(id)
-      .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    smoothScroll(e);
     //? close mobile nav
     handleToggle();
   })

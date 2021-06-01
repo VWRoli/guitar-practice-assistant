@@ -6,14 +6,6 @@
   --light2-clr: #fefefb;
   --accent-clr: #4285f4;
   --hover-clr: #3573d6;
-
-  /* --blueColor: #4285f4;
-  --blueGradient: linear-gradient(to top right, #164eaf, #4285f4);
-  --yellowGradient: linear-gradient(to top left, #ffb003, #ffcb03);
-  --redGradient: linear-gradient(to top left, #e52a5a, #ff585f);
-  --songBorder: #8a3fcf;
-  --excerciseBorder: #ff4500;
-  --greenGradient: linear-gradient(to top left, #39b385, #9be15d); */
 }
 /*************? GLOBAL ******************/
 * {
@@ -82,7 +74,11 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 .logo,
 .logo span {
@@ -106,6 +102,9 @@ h4 {
 .landing__nav-account {
   display: flex;
 }
+.mobile-dropdown {
+  display: flex;
+}
 
 /*************? HERO ******************/
 #landing__hero {
@@ -113,6 +112,7 @@ h4 {
   display: flex;
   justify-content: space-around;
   padding: 1rem 5rem;
+  margin-top: 80px;
 }
 .landing__hero-text {
   flex: 1;
@@ -120,9 +120,6 @@ h4 {
   flex-direction: column;
   justify-content: center;
   color: var(--light2-clr);
-}
-.mobile-dropdown {
-  display: flex;
 }
 .landing__hero-text h1 span {
   font-size: 4rem;
@@ -309,6 +306,9 @@ h4 {
   }
   .mobile-dropdown {
     display: block;
+    position: fixed;
+    top: 80px;
+    background-color: var(--dark-clr);
     max-height: 0;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
