@@ -80,7 +80,7 @@ h4 {
   background-color: var(--dark-clr);
   color: var(--light2-clr);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   min-height: 80px;
 }
@@ -88,12 +88,14 @@ h4 {
 .logo span {
   font-size: 2rem;
 }
-
+#burger-icon {
+  display: none;
+}
 .landing__nav-center {
   display: flex;
+  margin: 0 10rem;
 }
-.landing__nav-center li,
-.landing__nav-account li {
+.nav-link {
   font-size: 1.5rem;
   margin: 1rem 2rem;
 }
@@ -110,14 +112,18 @@ h4 {
   background-color: var(--dark2-clr);
   display: flex;
   justify-content: space-around;
+  padding: 1rem 5rem;
 }
 .landing__hero-text {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: var(--light2-clr);
 }
-
+.mobile-dropdown {
+  display: flex;
+}
 .landing__hero-text h1 span {
   font-size: 4rem;
 }
@@ -127,6 +133,7 @@ h4 {
   margin: 1.5rem 0;
 }
 .landing__hero-img-wrapper {
+  flex: 1;
   position: relative;
   max-width: 680px;
   margin: 1.5rem;
@@ -176,10 +183,17 @@ h4 {
   color: var(--dark-clr);
   margin-right: 1rem;
   max-width: 520px;
+  flex: 2;
 }
 .card-img-wrapper {
   margin-left: 1rem;
   max-width: 480px;
+  flex: 1;
+  display: grid;
+  place-content: center;
+}
+.landing__card-container.card-reverse .card-img-wrapper {
+  margin-right: 1rem;
 }
 .card-img-wrapper img {
   border-radius: 25px;
@@ -190,6 +204,7 @@ h4 {
   color: var(--light2-clr);
   text-align: center;
   padding: 3rem;
+  padding-bottom: 5rem;
 }
 #landing__about h2 {
   padding-top: 2rem;
@@ -211,4 +226,182 @@ h4 {
 }
 #landing__footer .logo {
   margin: 0;
+}
+
+/*************? MEDIA QUERIES ******************/
+@media screen and (max-width: 1550px) {
+  h2 {
+    font-size: 2rem;
+  }
+  .landing__card-container {
+    width: 80vw;
+  }
+  .landing__nav-center {
+    margin: 0 8rem;
+  }
+}
+@media screen and (max-width: 1450px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .landing__card-container {
+    width: 90vw;
+  }
+  .card-text-wrapper {
+    flex: 1;
+  }
+  .card-img-wrapper {
+    flex: 1;
+  }
+  .landing__nav-center {
+    margin: 0 3rem;
+  }
+  #landing__hero {
+    padding: 1rem;
+  }
+}
+@media screen and (max-width: 968px) {
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0.75rem 0;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .landing__nav-burger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: right;
+    padding: 0 1rem;
+    color: var(--light2-clr);
+  }
+  #burger-icon {
+    display: block;
+  }
+  .landing__nav-container {
+    flex-direction: column;
+  }
+  .landing__nav-center {
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+  }
+  .nav-link {
+    margin: 0.5rem;
+  }
+  .landing__nav-account {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .mobile-dropdown {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+  }
+  .landing__hero-text p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .landing__hero-text h1 span {
+    font-size: 3rem;
+  }
+  .landing__hero-img-wrapper {
+    max-width: 480px;
+  }
+  .primary-btn {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    background-color: var(--accent-clr);
+    width: fit-content;
+    padding: 1.25rem 2rem;
+    border-radius: 25px;
+    transition: all 0.25s;
+  }
+  .landing__card-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .landing__card-container.card-reverse {
+    flex-direction: column;
+  }
+  .card-text-wrapper {
+    max-width: 90%;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+  .card-img-wrapper,
+  .landing__card-container.reverse .card-img-wrapper {
+    margin: 0;
+  }
+  .landing__card-container.card-reverse .card-img-wrapper {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 789px) {
+  #landing__hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .landing__hero-text {
+    text-align: center;
+  }
+  .primary-btn {
+    margin: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .landing__hero-text h1 span {
+    font-size: 2.5rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .landing__card-container,
+  .landing__card-container.card-reverse {
+    padding: 1rem;
+  }
+  .card-img-wrapper {
+    margin: 0;
+  }
+  .landing__hero-text h1 span {
+    font-size: 2rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  #landing__footer {
+    padding: 1rem;
+  }
+  #landing__footer .logo {
+    margin-right: 1rem;
+  }
+}
+
+/*? HIDE */
+.visible {
+  height: auto;
+  max-height: 225px;
 }

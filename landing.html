@@ -18,7 +18,7 @@
     />
 
     <link rel="stylesheet" href="./css/landing.css" />
-    <script defer src="./js/main.js"></script>
+    <script defer src="./js/landing.js"></script>
     <title>Home | Guitar Practice Assistant</title>
   </head>
   <body>
@@ -26,17 +26,22 @@
     <nav class="landing__nav-container">
       <div class="landing__nav-burger">
         <h1 class="logo"><span class="accent-clr">Guitar</span>PA</h1>
-        <!-- <i class="fas fa-bars fa-2x" id="burger-icon"></i> -->
+        <i class="fas fa-bars fa-2x" id="burger-icon"></i>
       </div>
-      <ul class="landing__nav-center">
-        <li><a href="#landing__hero">Home</a></li>
-        <li><a href="#landing__overview">Overview</a></li>
-        <li><a href="#landing__about">About</a></li>
-      </ul>
-      <ul class="landing__nav-account">
-        <li><a href="login.html">Login</a></li>
-        <li><a href="signup.html" class="accent-clr">Create an account</a></li>
-      </ul>
+      <div class="mobile-dropdown">
+        <ul class="landing__nav-center">
+          <li class="nav-link"><a href="#landing__hero">Home</a></li>
+          <li class="nav-link"><a href="#landing__overview">Overview</a></li>
+          <li class="nav-link"><a href="#landing__about">About</a></li>
+        </ul>
+
+        <ul class="landing__nav-account">
+          <li class="nav-link"><a href="login.html">Login</a></li>
+          <li class="nav-link">
+            <a href="signup.html" class="accent-clr">Create an account</a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <!--? HERO -->
     <section id="landing__hero">
@@ -104,7 +109,7 @@
         on learning to play.
       </p>
       <h3>Join now</h3>
-      <a href="signup.html" class="primary-btn">Create a new account</a>
+      <a href="signup.html" class="primary-btn">Create an account</a>
     </section>
     <footer id="landing__footer">
       <h2 class="logo"><span class="accent-clr">Guitar</span>PA</h2>
