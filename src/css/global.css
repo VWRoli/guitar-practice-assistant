@@ -13,6 +13,9 @@ ul {
 img {
   width: 100%;
 }
+input {
+  outline: none;
+}
 a {
   text-decoration: none;
   color: var(--light2-clr);
@@ -47,6 +50,8 @@ h4 {
   color: var(--accent-clr);
 }
 .primary-btn {
+  border: none;
+  color: var(--light-clr);
   font-size: 1.5rem;
   line-height: 1.5rem;
   background-color: var(--accent-clr);
@@ -54,8 +59,18 @@ h4 {
   padding: 1.25rem 2rem;
   border-radius: 25px;
   transition: all 0.25s;
+  cursor: pointer;
 }
 .primary-btn:hover {
   color: var(--light2-clr);
   background-color: var(--hover-clr);
+}
+
+.logo,
+.logo span {
+  font-size: 2rem;
+}
+.muted {
+  color: var(--muted-text);
+  font-size: 0.9rem;
 }
