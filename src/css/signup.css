@@ -64,6 +64,10 @@
 .signup-btn {
   margin: 2rem auto;
 }
+.login-btn {
+  width: 75%;
+  margin: 2rem auto;
+}
 .terms-group {
   max-width: 350px;
   margin-bottom: 1.5rem;
@@ -98,5 +102,8 @@
   }
   .signup-btn {
     padding: 1.5rem;
+  }
+  .login-btn {
+    width: 90%;
   }
 }
