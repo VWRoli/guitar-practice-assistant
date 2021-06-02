@@ -2,7 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Import fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Import Fontawesome -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
@@ -14,134 +22,108 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./favicon_io/favicon-32x32.png"
+      href="./src/assets/favicon-32x32.png"
     />
 
-    <link rel="stylesheet" href="./css/style.css" />
-    <script defer src="./js/metronome.js"></script>
-    <script defer src="./js/main.js"></script>
-    <title>Guitar Practice Assistance</title>
+    <link rel="stylesheet" href="./css/landing.css" />
+    <script defer src="./js/landing.js"></script>
+    <title>Home | Guitar Practice Assistant</title>
   </head>
   <body>
-    <div class="message-box">Message</div>
-    <main class="container">
-      <!--? PRACTICE ASSISTANT SECTION -->
-      <section class="practice-assistant">
-        <h1 class="logo"><i class="fas fa-guitar"></i> Practice Assistant</h1>
-        <ul id="practice-items">
-          <!--? INPUT FORM SECTION -->
-          <form class="practice-item new-practice-item">
-            <div class="form-group">
-              <div class="title-group">
-                <label for="title" id="title-label">Title</label>
-                <input
-                  type="text"
-                  name="title"
-                  id="title-input"
-                  placeholder="Song, excercise, chord..."
-                  required
-                />
-              </div>
-
-              <div class="duration-group">
-                <label for="duration" id="duration-label">Duration</label>
-                <input
-                  type="number"
-                  name="duration"
-                  id="duration-input"
-                  placeholder="Min"
-                  min="0"
-                  max="99"
-                />
-              </div>
-
-              <div class="type-group">
-                <label for="type" id="type-label">Type</label>
-                <select class="form-input-type">
-                  <option value="excercise">Excercise</option>
-                  <option value="song">Song</option>
-                </select>
-              </div>
-
-              <div class="btn-group">
-                <button type="submit" id="add-new-item" class="dark-btn">
-                  Add
-                </button>
-              </div>
-            </div>
-
-            <div class="slide-btn">
-              <span>
-                <i class="fas fa-chevron-up"></i>
-              </span>
-            </div>
-          </form>
-        </ul>
-      </section>
-      <!--? CONTENT SECTION -->
-      <div class="content">
-        <nav>
-          <ul class="navbar">
-            <li class="nav-item nav-tab nav-active" id="home">Home</li>
-            <li class="nav-item nav-tab" id="metronome">Metronome</li>
-            <li class="nav-item"><a href="fretboard.html">Fretboard</a></li>
-          </ul>
-        </nav>
-        <!--? HOME SECTION -->
-        <section class="home content">
-          <h2>Welcome to your Guitar Practice Assistant</h2>
-          <p>
-            Here you will find everything you need for your practice sessions.
-          </p>
-          <h3>Practice Items</h3>
-          <p>
-            You can add your practice items on the left. Set a title and a
-            <br />
-            practice duration. You can choose between a song or an excercise.
-          </p>
-          <h3>Metronome</h3>
-          <p>
-            The most important thing for any musician is keeping time. You can
-            <br />
-            practice with a metronome under the Metronome tab.
-          </p>
-          <h3>Fretboard</h3>
-          <p>
-            Every guitarist should know the notes on the fretboard. Practice<br />
-            your notes with a fun game under the Fretboard tab.
-          </p>
-        </section>
-        <!--? METRONOME SECTION -->
-        <section class="metronome-container content hidden">
-          <div class="metronome-start-btn">
-            <i class="far fa-play-circle fa-9x gradient-btn"></i>
-          </div>
-          <div class="bpm-numbers">
-            <h2 class="bpm-label">
-              <span class="bpm-number-display"></span> BPM
-            </h2>
-          </div>
-          <div class="controls">
-            <button class="control-btn btn-minus">
-              <i class="fas fa-minus-square fa-2x"></i>
-            </button>
-            <form class="bpm">
-              <input
-                type="range"
-                name="bpm-number-input"
-                id="bpm-number-input"
-                min="40"
-                max="180"
-                value="120"
-              />
-            </form>
-
-            <button class="control-btn btn-plus">
-              <i class="fas fa-plus-square fa-2x"></i>
-            </button>
-          </div>
-        </section>
+    <!--? NAVBAR -->
+    <nav class="landing__nav-container">
+      <div class="landing__nav-burger">
+        <h1 class="logo"><span class="accent-clr">Guitar</span>PA</h1>
+        <i class="fas fa-bars fa-2x" id="burger-icon"></i>
       </div>
-    </main>
+      <div class="mobile-dropdown">
+        <ul class="landing__nav-center">
+          <li class="nav-link"><a href="#landing__hero">Home</a></li>
+          <li class="nav-link"><a href="#landing__overview">Overview</a></li>
+          <li class="nav-link"><a href="#landing__about">About</a></li>
+        </ul>
+
+        <ul class="landing__nav-account">
+          <li class="nav-link"><a href="login.html">Login</a></li>
+          <li class="nav-link">
+            <a href="signup.html" class="accent-clr">Create an account</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--? HERO -->
+    <section id="landing__hero">
+      <div class="landing__hero-text">
+        <h1><span class="accent-clr">Guitar</span> Practice Assistant</h1>
+        <p>
+          Completely FREE guitar practice assistant for every guitarist. <br />
+          Whether you are just starting out, or playing for years, a great<br />
+          practice routine helps you to get to the next level.
+        </p>
+        <a href="signup.html" class="primary-btn">Create a new account</a>
+      </div>
+      <div class="landing__hero-img-wrapper">
+        <img src="./images/hero.jpg" alt="The App" />
+      </div>
+    </section>
+    <!--? OVERVIEW -->
+    <section id="landing__overview">
+      <article class="landing__card-container">
+        <div class="card-text-wrapper">
+          <h2>Create your own practice items</h2>
+          <p>
+            Create, edit, delete your practice items easily, so you can practice
+            as efficiently as possible.
+          </p>
+        </div>
+        <div class="card-img-wrapper">
+          <img src="./images/gap-add.png" alt="Add practice items easily" />
+        </div>
+      </article>
+
+      <article class="landing__card-container card-reverse">
+        <div class="card-text-wrapper">
+          <h2>Navigate easily</h2>
+          <p>
+            Navigation is super easy between your practice items. Each item has
+            it's own timer so you know how much time you put in.
+          </p>
+        </div>
+        <div class="card-img-wrapper">
+          <img src="./images/gap-items.png" alt="Practice items" />
+        </div>
+      </article>
+
+      <article class="landing__card-container">
+        <div class="card-text-wrapper">
+          <h2>Built in metronome</h2>
+          <p>
+            Simple and super easy-to-use metronome. The most important thing for
+            any musician is keeping time. You can practice with a metronome
+            under the Metronome tab.
+          </p>
+        </div>
+        <div class="card-img-wrapper">
+          <img src="./images/gap-metronome.png" alt="Built in metronome" />
+        </div>
+      </article>
+    </section>
+    <!--? ABOUT -->
+    <section id="landing__about">
+      <h2>About Guitar Practice Assistant</h2>
+      <p class="landing__about-text">
+        Guitar PA is FREE and easy to use app to help you become the best
+        guitarist you can be. Here you will find everything you need for your
+        practice sessions. It is built with simplicity in mind so you can focus
+        on learning to play.
+      </p>
+      <h3>Join now</h3>
+      <a href="signup.html" class="primary-btn">Create an account</a>
+    </section>
+    <!--? FOOTER -->
+    <footer id="landing__footer">
+      <h2 class="logo"><span class="accent-clr">Guitar</span>PA</h2>
+      <p>&copy; Guitar Practice Assistant 2021</p>
+    </footer>
   </body>
 </html>
