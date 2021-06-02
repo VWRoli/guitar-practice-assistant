@@ -12,13 +12,19 @@ burgerNav.addEventListener('click', handleToggle);
 
 //? Smooth Scroll
 const smoothScroll = (e) => {
-  e.preventDefault();
-  const id = e.target.getAttribute('href');
-  const yOffset = -80;
-  const element = document.querySelector(id);
-  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  const navCenter = e.target.closest('.landing__nav-center');
 
-  window.scrollTo({ top: y, behavior: 'smooth' });
+  if (navCenter) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+
+    const yOffset = -80;
+    const element = document.querySelector(id);
+    const y =
+      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
 };
 
 navLinkEl.forEach((link) =>
