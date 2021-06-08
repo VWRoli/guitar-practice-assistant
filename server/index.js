@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+import itemRoutes from './routes/items.js';
+
 dotenv.config({ silent: true });
 
 //App init
@@ -12,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use('/items', itemRoutes);
 
 const port = process.env.PORT;
 
