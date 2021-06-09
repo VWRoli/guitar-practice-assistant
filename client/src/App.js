@@ -1,7 +1,15 @@
+import MainContent from './components/MainContent/MainContent';
+import Sidebar from './components/Sidebar/Sidebar';
+//CSS
+import './css/main.min.css';
+
 function App() {
   return (
     <div className="App">
-      <h1>MERN App</h1>
+      <main className="container">
+        <Sidebar />
+        <MainContent />
+      </main>
     </div>
   );
 }
