@@ -1,0 +1,54 @@
+.practice-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  background: $dark2-clr;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.practice-item-title {
+  grid-column: span 3;
+  margin: 0;
+  font-size: 1rem;
+}
+.practice-item-details {
+  grid-column: span 2;
+  align-self: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  span {
+    display: flex;
+    align-items: center;
+    svg {
+      margin-left: 5px;
+    }
+  }
+}
+
+.play-btn {
+  justify-self: end;
+  background: $dark2-clr;
+  color: $light2-clr;
+  border: none;
+  cursor: pointer;
+  svg {
+    font-size: 2rem;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.close-item {
+  text-align: right;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #e52a5a;
+  cursor: pointer;
+}
+.practice-item-type {
+  svg {
+    color: #4285f4;
+  }
+}
