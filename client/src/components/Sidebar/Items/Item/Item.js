@@ -23,7 +23,7 @@ const Item = ({ item }) => {
     handleResume,
     handleReset,
     disableItem,
-  } = useTimer(item.duration * 5);
+  } = useTimer(item.duration * 60);
 
   return (
     <li

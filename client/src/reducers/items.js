@@ -4,7 +4,7 @@ import {
   DELETE_ITEM,
 } from '../constants/actionTypes';
 
-export default (items = [], action) => {
+const itemsReducer = (items = [], action) => {
   switch (action.type) {
     case FETCH_ITEMS:
       return action.payload;
@@ -16,3 +16,4 @@ export default (items = [], action) => {
       return items;
   }
 };
+export default itemsReducer;

@@ -7,15 +7,24 @@ const AddNewItem = () => {
   const [visible, setVisible] = useState(true);
   const [itemData, setItemData] = useState({
     title: '',
-    duration: 0,
+    duration: 5,
     type: 'excercise',
   });
+
+  const clear = () => {
+    setItemData({
+      title: '',
+      duration: 5,
+      type: 'excercise',
+    });
+  };
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createItem(itemData));
+    clear();
   };
   return (
     <form className="new-practice-item" onSubmit={handleSubmit}>
