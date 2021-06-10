@@ -49,6 +49,7 @@ const useTimer = (initialState) => {
     setTimerActive(false);
     setIsPaused(false);
     setTimeLeft(initialState);
+    setDisableItem(false);
   };
 
   return {

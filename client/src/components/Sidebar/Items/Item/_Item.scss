@@ -1,15 +1,17 @@
 .practice-item {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   position: relative;
-  background: $dark2-clr;
   border-radius: 5px;
   padding: 1rem;
+  background: $dark2-clr;
   margin-bottom: 1rem;
 }
 .disable-item {
-  opacity: 0.5;
+  opacity: 0.35;
   pointer-events: none;
+}
+.practice-item-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 .practice-item-title {
   grid-column: span 3;
@@ -44,6 +46,33 @@
   }
   &:hover {
     transform: scale(1.1);
+  }
+}
+.reset-btn-wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  backdrop-filter: blur(1px);
+}
+.reset-btn {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  svg {
+    font-size: 1.25rem;
+    color: $light2-clr;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 .close-item {
