@@ -7,6 +7,10 @@
   padding: 1rem;
   margin-bottom: 1rem;
 }
+.disable-item {
+  opacity: 0.5;
+  pointer-events: none;
+}
 .practice-item-title {
   grid-column: span 3;
   margin: 0;
@@ -20,12 +24,15 @@
   span {
     display: flex;
     align-items: center;
+
     svg {
       margin-left: 5px;
     }
   }
 }
-
+.practice-item-time-value {
+  margin-left: 5px;
+}
 .play-btn {
   justify-self: end;
   background: $dark2-clr;

@@ -5,14 +5,37 @@ import {
   FaMusic,
   FaTimes,
   FaRegPlayCircle,
+  FaRegPauseCircle,
 } from 'react-icons/fa';
 import { deleteItem } from '../../../../actions/items';
+import useTimer from '../../../../hooks/useTimer';
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();
+  const {
+    timeLeft,
+    timerActive,
+    isPaused,
+    handleStart,
+    handlePause,
+    handleResume,
+    handleReset,
+    disableItem,
+  } = useTimer(item.duration * 5);
+
+  const formatTime = (duration) => {
+    const min = String(Math.trunc(duration / 60)).padStart(2, 0);
+    const sec = String(duration % 60).padStart(2, 0);
+    return `${min}:${sec}`;
+  };
 
   return (
-    <li className="practice-item">
+    <li
+      className={disableItem ? 'practice-item disable-item' : 'practice-item'}
+      style={{
+        borderLeft:
+          item.type === 'song' ? '5px solid #ffb003' : ' 5px solid #4285f4',
+      }}>
       <FaTimes
         className="close-item"
         onClick={() => dispatch(deleteItem(item._id))}
@@ -28,14 +51,27 @@ const Item = ({ item }) => {
           )}
         </span>
         <span>
-          Time: <span className="practice-item-time-value">00:00</span>
+          Time:{' '}
+          <span className="practice-item-time-value">
+            {formatTime(timeLeft)}
+          </span>
           <FaRegClock style={{ color: '#9be15d' }} />
         </span>
       </div>
 
-      <button className="play-btn">
-        <FaRegPlayCircle />
-      </button>
+      {!timerActive && !isPaused ? (
+        <button className="play-btn" onClick={handleStart}>
+          <FaRegPlayCircle />
+        </button>
+      ) : isPaused ? (
+        <button className="play-btn" onClick={handlePause}>
+          <FaRegPauseCircle />
+        </button>
+      ) : (
+        <button className="play-btn" onClick={handleResume}>
+          <FaRegPlayCircle />
+        </button>
+      )}
     </li>
   );
 };

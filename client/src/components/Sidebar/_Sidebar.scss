@@ -7,3 +7,6 @@ aside {
   height: 80vh;
   overflow-y: scroll;
 }
+aside::-webkit-scrollbar {
+  width: 0;
+}
