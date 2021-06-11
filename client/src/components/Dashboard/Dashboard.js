@@ -13,10 +13,12 @@ const Dashboard = () => {
     dispatch(getItems());
   }, [dispatch]);
   return (
-    <main className="container">
-      <Sidebar />
-      <MainContent />
-    </main>
+    <div className="dash-container">
+      <main className="container">
+        <Sidebar />
+        <MainContent />
+      </main>
+    </div>
   );
 };
 

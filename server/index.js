@@ -17,6 +17,7 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('Welcome to the Guitar Practice Assistant API!');
 });
+
 app.use('/items', itemRoutes);
 
 const port = process.env.PORT;
@@ -31,4 +32,4 @@ mongoose
   .then(() => {
     app.listen(port, () => console.log(`Server is up on port ${port}`));
   })
-  .catch((error) => console.log(error.message));
+  .catch((error) => console.log(error));
