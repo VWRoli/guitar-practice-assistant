@@ -14,6 +14,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Guitar Practice Assistant API!');
+});
 app.use('/items', itemRoutes);
 
 const port = process.env.PORT;

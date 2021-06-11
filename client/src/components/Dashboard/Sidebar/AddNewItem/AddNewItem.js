@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { createItem } from '../../../actions/items';
+import { createItem } from '../../../../actions/items';
 
 const AddNewItem = () => {
   const [visible, setVisible] = useState(true);

@@ -1,7 +1,8 @@
 @import './variables';
 @import './global';
-@import '../components/Sidebar/Sidebar';
-@import '../components/Sidebar/AddNewItem/AddNewItem';
-@import '../components/Sidebar/Items/Items';
-@import '../components/Sidebar/Items/Item/Item';
-@import '../components/MainContent/Metronome/Metronome';
+@import '../components/Dashboard/Sidebar/Sidebar';
+@import '../components/Dashboard/Sidebar/AddNewItem/AddNewItem';
+@import '../components/Dashboard/Sidebar/Items/Items';
+@import '../components/Dashboard/Sidebar/Items/Item/Item';
+@import '../components/Home/Home';
+@import '../components/Auth/Auth';

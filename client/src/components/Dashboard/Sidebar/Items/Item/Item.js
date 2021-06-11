@@ -8,9 +8,9 @@ import {
   FaRegPauseCircle,
   FaRedoAlt,
 } from 'react-icons/fa';
-import { deleteItem } from '../../../../actions/items';
-import useTimer from '../../../../hooks/useTimer';
-import { formatTime } from '../../../../utils/helpers';
+import { deleteItem } from '../../../../../actions/items';
+import useTimer from '../../../../../hooks/useTimer';
+import { formatTime } from '../../../../../utils/helpers';
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();
