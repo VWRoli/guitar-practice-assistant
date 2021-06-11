@@ -81,9 +81,12 @@ button {
   color: $muted-text;
   font-size: 0.9rem;
 }
+
 .App {
   background-color: $light-clr;
   color: $dark-text;
+}
+.dash-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,8 +94,6 @@ button {
 }
 .container {
   display: flex;
-  background: $light2-clr;
-  border-radius: 25px;
-  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.66);
+  @include container();
   margin: 0 1rem;
 }

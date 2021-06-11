@@ -1,4 +1,5 @@
 @import './variables';
+@import './utils';
 @import './global';
 @import '../components/Dashboard/Sidebar/Sidebar';
 @import '../components/Dashboard/Sidebar/AddNewItem/AddNewItem';
@@ -6,3 +7,8 @@
 @import '../components/Dashboard/Sidebar/Items/Item/Item';
 @import '../components/Home/Home';
 @import '../components/Auth/Auth';
+@import '../components/Home/Navbar/Navbar';
+@import '../components/Home/Hero/Hero';
+@import '../components/Home/Overview/Overview';
+@import '../components/Home/About/About';
+@import '../components/Home/Footer/Footer';
