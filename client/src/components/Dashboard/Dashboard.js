@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 //Components
 import MainContent from './MainContent/MainContent';
 import Sidebar from './Sidebar/Sidebar';
+import DashNav from './DashNav/DashNav';
 
 import { getItems } from '../../actions/items';
 
@@ -15,6 +16,7 @@ const Dashboard = () => {
   return (
     <div className="dash-container">
       <main className="container">
+        <DashNav />
         <Sidebar />
         <MainContent />
       </main>

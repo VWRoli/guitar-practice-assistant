@@ -4,3 +4,9 @@
   box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.66);
   margin: 1rem;
 }
+@mixin button() {
+  border-radius: 25px;
+  border: none;
+  width: fit-content;
+  transition: all 0.25s;
+}

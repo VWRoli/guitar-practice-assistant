@@ -1,14 +1,39 @@
 import { useState } from 'react';
+import { GoogleLogin } from 'react-google-login';
+import { FaGoogle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { AUTH } from '../../constants/actionTypes';
 //Components
 import Input from './Input';
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(true);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = () => {};
   const handleChange = () => {};
+
+  //Switch between login and signup form
   const switchMode = () => {
     setIsSignup(!isSignup);
+  };
+
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    try {
+      dispatch({ type: AUTH, payload: { result, token } });
+      history.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = (error) => {
+    console.log(error);
+    console.log('Google sign in was unsuccessful. Try again later');
   };
 
   return (
@@ -50,6 +75,22 @@ const Auth = () => {
           <button type="submit" className="primary-btn signup-btn">
             {isSignup ? 'Create my account' : 'Log in to my account'}
           </button>
+
+          <GoogleLogin
+            clientId="972082015220-v4lucdrooruvraceqvk0dkbvaud02aot.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button
+                type="submit"
+                className="secondary-btn"
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}>
+                <FaGoogle /> Log in with Google
+              </button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy="single_host_origin"
+          />
 
           <hr />
 
