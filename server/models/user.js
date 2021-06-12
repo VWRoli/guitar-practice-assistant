@@ -7,4 +7,14 @@ const userSchema = mongoose.Schema({
   id: { type: String },
 });
 
+//Remove password and other sensitive information from response
+userSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+
+  delete userObject.password;
+
+  return userObject;
+};
+
 export default mongoose.model('User', userSchema);
