@@ -11,7 +11,7 @@ export const getItems = () => async (dispatch) => {
 
     dispatch({ type: FETCH_ITEMS, payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -20,7 +20,7 @@ export const createItem = (item) => async (dispatch) => {
     const { data } = await api.createItem(item);
     dispatch({ type: CREATE_ITEMS, payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 

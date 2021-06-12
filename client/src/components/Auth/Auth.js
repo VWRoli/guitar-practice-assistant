@@ -4,16 +4,35 @@ import { FaGoogle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { AUTH } from '../../constants/actionTypes';
+import { signin, signup } from '../../actions/auth';
 //Components
 import Input from './Input';
 
+const initialState = {
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
 const Auth = () => {
-  const [isSignup, setIsSignup] = useState(true);
+  const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
+  };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   //Switch between login and signup form
   const switchMode = () => {
@@ -52,23 +71,34 @@ const Auth = () => {
           </h2>
         </header>
         <div className="form-body">
-          <Input name="username" type="text" placeholder="Username" autofocus />
+          <Input
+            name="username"
+            type="text"
+            placeholder="Username"
+            autofocus
+            handleChange={handleChange}
+          />
           {isSignup && (
-            <Input name="email" type="email" placeholder="Email" autofocus />
+            <Input
+              name="email"
+              type="email"
+              placeholder="Email"
+              handleChange={handleChange}
+            />
           )}
 
           <Input
             name="password"
             type="password"
             placeholder="Password"
-            autofocus
+            handleChange={handleChange}
           />
           {isSignup && (
             <Input
               name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
-              autofocus
+              handleChange={handleChange}
             />
           )}
 

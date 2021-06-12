@@ -1,4 +1,4 @@
-const Input = ({ name, type, placeholder, autoFocus }) => {
+const Input = ({ name, type, placeholder, autoFocus, handleChange }) => {
   return (
     <div className="auth__form-group">
       <label htmlFor={name}></label>
@@ -8,6 +8,7 @@ const Input = ({ name, type, placeholder, autoFocus }) => {
         placeholder={placeholder}
         autoFocus={autoFocus}
         required
+        onChange={handleChange}
       />
     </div>
   );

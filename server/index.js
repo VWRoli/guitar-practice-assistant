@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import itemRoutes from './routes/items.js';
+import userRoutes from './routes/users.js';
 
 dotenv.config({ silent: true });
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/items', itemRoutes);
+app.use('/user', userRoutes);
 
 const port = process.env.PORT;
 

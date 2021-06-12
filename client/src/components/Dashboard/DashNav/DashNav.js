@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaSignOutAlt, FaUserEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -19,7 +19,9 @@ const DashNav = () => {
 
   return (
     <nav className="dash-nav">
-      <div>Logged in as, {user.result.name}</div>
+      <div>
+        Logged in as, <span className="username">{user.result.username}</span>
+      </div>
       <div className="dash-controls">
         <FaUserEdit />
         <FaSignOutAlt onClick={logout} />
