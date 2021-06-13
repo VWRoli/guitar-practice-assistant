@@ -3,17 +3,19 @@ import {
   CREATE_ITEMS,
   DELETE_ITEM,
   FETCH_ITEMS,
-  LOADING,
+  SET_ERROR,
+  SET_LOADING,
 } from '../constants/actionTypes';
 
 export const getItems = () => async (dispatch) => {
   try {
-    dispatch({ type: LOADING });
+    dispatch({ type: SET_LOADING });
     const { data } = await api.fetchItems();
 
     dispatch({ type: FETCH_ITEMS, payload: data });
   } catch (error) {
     console.log(error);
+    dispatch({ type: SET_ERROR, payload: error.message });
   }
 };
 
@@ -24,6 +26,7 @@ export const createItem = (item) => async (dispatch) => {
     dispatch({ type: CREATE_ITEMS, payload: data });
   } catch (error) {
     console.log(error);
+    dispatch({ type: SET_ERROR, payload: error.message });
   }
 };
 
@@ -34,5 +37,6 @@ export const deleteItem = (id) => async (dispatch) => {
     dispatch({ type: DELETE_ITEM, payload: id });
   } catch (error) {
     console.log(error);
+    dispatch({ type: SET_ERROR, payload: error.message });
   }
 };

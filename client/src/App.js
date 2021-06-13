@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 
 //CSS
 import './css/main.min.css';
+import NotFound from './components/Error/NotFound';
 
 function App() {
   const [isSignup, setIsSignup] = useState(true);
@@ -20,8 +21,10 @@ function App() {
           <Route path="/auth" exact>
             <Auth isSignup={isSignup} setIsSignup={setIsSignup} />
           </Route>
-
           <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>

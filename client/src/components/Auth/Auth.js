@@ -3,7 +3,7 @@ import { useState } from 'react';
 //import { FaGoogle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { AUTH } from '../../constants/actionTypes';
+//import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
 //Components
 import Input from './Input';
