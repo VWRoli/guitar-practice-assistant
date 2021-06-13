@@ -18,3 +18,15 @@
   width: 50vw;
   margin: auto;
 }
+.landing__about-img-wrapper {
+  max-width: 300px;
+  margin: 1rem auto;
+  position: relative;
+  img {
+    border-radius: 25px;
+  }
+  &::after {
+    content: '';
+    @include image-overlay();
+  }
+}

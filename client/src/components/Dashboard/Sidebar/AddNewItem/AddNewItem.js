@@ -1,24 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
-import { createItem } from '../../../../actions/items';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  createItem,
+  setCurrentId,
+  updateItem,
+} from '../../../../actions/items';
 
 const AddNewItem = () => {
   const [visible, setVisible] = useState(true);
+  const currentId = useSelector((state) => state.items.currentId);
   const user = JSON.parse(localStorage.getItem('guitar-pa-profile'));
+
+  const item = useSelector((state) =>
+    currentId ? state.items.items.find((item) => item._id === currentId) : null
+  );
+
+  useEffect(() => {
+    if (item) setItemData(item);
+  }, [currentId, item]);
 
   const [itemData, setItemData] = useState({
     title: '',
-    duration: 5,
+    duration: '',
     type: 'excercise',
     userId: user?.result._id,
+    isDisabled: false,
   });
 
   const clear = () => {
+    dispatch(setCurrentId(null));
     setItemData({
       ...itemData,
       title: '',
-      duration: 5,
+      duration: '',
+      type: 'excercise',
+      isDisabled: false,
     });
   };
 
@@ -26,7 +43,11 @@ const AddNewItem = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createItem(itemData));
+    if (currentId) {
+      dispatch(updateItem(currentId, itemData));
+    } else {
+      dispatch(createItem(itemData));
+    }
     clear();
   };
   return (
@@ -66,6 +87,7 @@ const AddNewItem = () => {
           <label htmlFor="type">Type</label>
           <select
             name="type"
+            value={itemData.type}
             onChange={(e) =>
               setItemData({ ...itemData, type: e.target.value })
             }>
@@ -75,7 +97,7 @@ const AddNewItem = () => {
         </div>
 
         <button type="submit" id="add-new-item-btn">
-          Add
+          {currentId ? 'Edit' : 'Add'}
         </button>
       </div>
 

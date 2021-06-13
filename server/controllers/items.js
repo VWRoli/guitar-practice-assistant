@@ -36,3 +36,21 @@ export const deleteItem = async (req, res) => {
 
   res.json({ message: 'Item deleted successfully' });
 };
+
+export const updateItem = async (req, res) => {
+  const { id: _id } = req.params;
+
+  const item = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).json('No item with that ID');
+  }
+
+  const updatedItem = await PracticeItem.findByIdAndUpdate(
+    _id,
+    { ...item, _id },
+    { new: true }
+  );
+
+  res.json(updatedItem);
+};

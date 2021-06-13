@@ -75,13 +75,20 @@
     }
   }
 }
-.close-item {
-  text-align: right;
+.item-controls {
   position: absolute;
   top: 5px;
   right: 10px;
-  color: #e52a5a;
-  cursor: pointer;
+  svg {
+    cursor: pointer;
+  }
+}
+.edit-item {
+  @include button-color(#d6d6d6, 10);
+  margin-right: 3px;
+}
+.close-item {
+  @include button-color(#e52a5a, 10);
 }
 .practice-item-type {
   svg {

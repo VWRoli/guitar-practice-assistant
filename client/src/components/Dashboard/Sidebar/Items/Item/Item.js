@@ -7,8 +7,9 @@ import {
   FaRegPlayCircle,
   FaRegPauseCircle,
   FaRedoAlt,
+  FaEdit,
 } from 'react-icons/fa';
-import { deleteItem } from '../../../../../actions/items';
+import { deleteItem, setCurrentId } from '../../../../../actions/items';
 import useTimer from '../../../../../hooks/useTimer';
 import { formatTime } from '../../../../../utils/helpers';
 
@@ -45,10 +46,16 @@ const Item = ({ item }) => {
             ? 'practice-item-wrapper disable-item'
             : 'practice-item-wrapper'
         }>
-        <FaTimes
-          className="close-item"
-          onClick={() => dispatch(deleteItem(item._id))}
-        />
+        <div className="item-controls">
+          <FaEdit
+            className="edit-item"
+            onClick={() => dispatch(setCurrentId(item._id))}
+          />
+          <FaTimes
+            className="close-item"
+            onClick={() => dispatch(deleteItem(item._id))}
+          />
+        </div>
         <h2 className="practice-item-title">{item.title}</h2>
         <div className="practice-item-details">
           <span>

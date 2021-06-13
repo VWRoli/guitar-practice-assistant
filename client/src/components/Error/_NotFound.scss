@@ -1,0 +1,25 @@
+#error-page {
+  @include container();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    color: $error-clr;
+    svg {
+      font-size: 3rem;
+    }
+  }
+  h2 {
+    color: $dark-clr;
+    padding: 1rem 0;
+  }
+  .error-icon {
+    font-size: 3rem;
+  }
+  .secondary-btn {
+    font-size: 1.25rem;
+    &:hover {
+      color: #fff;
+    }
+  }
+}

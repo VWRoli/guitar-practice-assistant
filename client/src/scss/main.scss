@@ -1,6 +1,9 @@
 @import './variables';
 @import './utils';
 @import './global';
+@import '../components/Loading/Loading';
+@import '../components/Error/Error';
+@import '../components/Error/NotFound';
 @import '../components/Dashboard/Sidebar/Sidebar';
 @import '../components/Dashboard/MainContent/MainContent';
 @import '../components/Dashboard/Sidebar/AddNewItem/AddNewItem';

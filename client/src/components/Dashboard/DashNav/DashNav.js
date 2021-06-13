@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaSignOutAlt, FaUserEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { LOGOUT } from '../../../constants/actionTypes';
+import decode from 'jwt-decode';
 
 const DashNav = () => {
   const [user, setUser] = useState(
@@ -16,6 +17,15 @@ const DashNav = () => {
     history.push('/');
     setUser(null);
   };
+
+  useEffect(() => {
+    const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+  }, []);
 
   return (
     <nav className="dash-nav">

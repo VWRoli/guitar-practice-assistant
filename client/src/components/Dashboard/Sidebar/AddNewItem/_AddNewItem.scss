@@ -31,6 +31,10 @@
   border-radius: 5px;
   padding: 0.35rem;
   border: none;
+  background-color: #ccc;
+  &:hover {
+    background-color: darken(#ccc, 10);
+  }
 }
 input,
 select {

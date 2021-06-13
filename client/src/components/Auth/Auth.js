@@ -1,12 +1,14 @@
 import { useState } from 'react';
 //import { GoogleLogin } from 'react-google-login';
 //import { FaGoogle } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { AUTH } from '../../constants/actionTypes';
+//import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
+import { Link } from 'react-router-dom';
 //Components
 import Input from './Input';
+import Error from '../Error/Error';
 
 const initialState = {
   username: '',
@@ -15,8 +17,8 @@ const initialState = {
   confirmPassword: '',
 };
 
-const Auth = () => {
-  const [isSignup, setIsSignup] = useState(false);
+const Auth = ({ isSignup, setIsSignup }) => {
+  const isError = useSelector((state) => state.items.isError);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -59,9 +61,11 @@ const Auth = () => {
     <section id="auth">
       <div className="auth__bg-overlay"></div>
       <header className="auth__main-header">
-        <h1 className="logo">
-          <span className="accent-clr">Guitar</span> PA
-        </h1>
+        <Link to="/">
+          <h1 className="logo">
+            <span className="accent-clr">Guitar</span> PA
+          </h1>
+        </Link>
       </header>
       <form className="auth__form" onSubmit={handleSubmit}>
         <header className="form-header">
@@ -101,7 +105,7 @@ const Auth = () => {
               handleChange={handleChange}
             />
           )}
-
+          {isError && <Error />}
           <button type="submit" className="primary-btn signup-btn">
             {isSignup ? 'Create my account' : 'Log in to my account'}
           </button>
