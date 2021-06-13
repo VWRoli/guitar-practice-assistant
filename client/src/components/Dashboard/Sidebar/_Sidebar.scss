@@ -6,8 +6,18 @@ aside {
   border-radius: 25px 0 0 25px;
   height: 80vh;
   overflow-y: scroll;
-  flex: 1;
+  flex: 4;
 }
 aside::-webkit-scrollbar {
   width: 0;
+}
+@media screen and (max-width: 1250px) {
+  aside {
+    flex: 5;
+  }
+}
+@media screen and (max-width: 1000px) {
+  aside {
+    flex: 6;
+  }
 }

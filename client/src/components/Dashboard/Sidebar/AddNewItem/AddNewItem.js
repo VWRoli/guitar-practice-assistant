@@ -16,10 +16,9 @@ const AddNewItem = () => {
 
   const clear = () => {
     setItemData({
+      ...itemData,
       title: '',
       duration: 5,
-      type: 'excercise',
-      userId: null,
     });
   };
 
@@ -47,7 +46,7 @@ const AddNewItem = () => {
           />
         </div>
 
-        <div>
+        <div className="duration-group">
           <label htmlFor="duration">Duration</label>
           <input
             type="number"
@@ -63,7 +62,7 @@ const AddNewItem = () => {
           />
         </div>
 
-        <div>
+        <div className="type-group">
           <label htmlFor="type">Type</label>
           <select
             name="type"
