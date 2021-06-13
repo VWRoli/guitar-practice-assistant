@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //Components
 import MainContent from './MainContent/MainContent';
 import Sidebar from './Sidebar/Sidebar';
@@ -9,10 +9,12 @@ import { getItems } from '../../actions/items';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const currentId = useSelector((state) => state.items.currentId);
 
   useEffect(() => {
     dispatch(getItems());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
+
   return (
     <div className="dash-container">
       <main className="container">
