@@ -4,7 +4,7 @@ import { Link as LinkScroll } from 'react-scroll';
 import { links } from './navbarData';
 import { FaBars } from 'react-icons/fa';
 
-const Navbar = () => {
+const Navbar = ({ setIsSignup }) => {
   const [showMobile, setShowMobile] = useState(false);
 
   const handleToggle = () => {
@@ -43,7 +43,9 @@ const Navbar = () => {
 
         <ul className="landing__nav-account">
           <li className="nav-link">
-            <Link to="/auth">Login</Link>
+            <Link to="/auth" onClick={() => setIsSignup(false)}>
+              Login
+            </Link>
           </li>
           <li className="nav-link">
             <Link to="/auth" className="accent-clr">

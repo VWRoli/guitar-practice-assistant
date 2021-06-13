@@ -15,8 +15,7 @@ const initialState = {
   confirmPassword: '',
 };
 
-const Auth = () => {
-  const [isSignup, setIsSignup] = useState(false);
+const Auth = ({ isSignup, setIsSignup }) => {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();

@@ -4,10 +4,10 @@ import Overview from './Overview/Overview';
 import About from './About/About';
 import Footer from './Footer/Footer';
 
-const Home = () => {
+const Home = ({ setIsSignup }) => {
   return (
     <section id="home">
-      <Navbar />
+      <Navbar setIsSignup={setIsSignup} />
       <Hero />
       <Overview />
       <About />
