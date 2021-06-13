@@ -12,6 +12,7 @@ const AddNewItem = () => {
     duration: 5,
     type: 'excercise',
     userId: user?.result._id,
+    isDisabled: false,
   });
 
   const clear = () => {

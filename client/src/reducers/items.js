@@ -2,18 +2,30 @@ import {
   FETCH_ITEMS,
   CREATE_ITEMS,
   DELETE_ITEM,
+  LOADING,
 } from '../constants/actionTypes';
 
-const itemsReducer = (items = [], action) => {
+const defaultState = {
+  isLoading: false,
+  isError: false,
+  items: [],
+};
+
+const itemsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case FETCH_ITEMS:
-      return action.payload;
+      return { ...state, items: action.payload, isLoading: false };
     case CREATE_ITEMS:
-      return [...items, action.payload];
+      return { ...state, items: [...state.items, action.payload] };
     case DELETE_ITEM:
-      return items.filter((item) => item._id !== action.payload);
+      return {
+        ...state,
+        items: state.items.filter((item) => item._id !== action.payload),
+      };
+    case LOADING:
+      return { ...state, isLoading: true };
     default:
-      return items;
+      return state;
   }
 };
 export default itemsReducer;
