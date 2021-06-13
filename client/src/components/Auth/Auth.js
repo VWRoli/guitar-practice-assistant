@@ -1,12 +1,13 @@
 import { useState } from 'react';
 //import { GoogleLogin } from 'react-google-login';
 //import { FaGoogle } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 //import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
 //Components
 import Input from './Input';
+import Error from '../Error/Error';
 
 const initialState = {
   username: '',
@@ -16,6 +17,7 @@ const initialState = {
 };
 
 const Auth = ({ isSignup, setIsSignup }) => {
+  const isError = useSelector((state) => state.items.isError);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -100,7 +102,7 @@ const Auth = ({ isSignup, setIsSignup }) => {
               handleChange={handleChange}
             />
           )}
-
+          {isError && <Error />}
           <button type="submit" className="primary-btn signup-btn">
             {isSignup ? 'Create my account' : 'Log in to my account'}
           </button>

@@ -7,6 +7,7 @@ const Error = () => {
     <div className="error-container">
       <FaExclamationTriangle className="error-sign" />
       <p>{msg}</p>
+      <p>Please refresh the page or try again later.</p>
     </div>
   );
 };
