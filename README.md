@@ -2,6 +2,8 @@
 
 <img src="client/src/assets/guitar-pa.png"/>
 
+[Live Demo](https://guitar-pa.netlify.app/) (username: demoUser1 password: 123456)
+
 ## Intro
 
 Started as a vanilla JS project, which turned into a full stack MERN application as I'm learning new skills and technologies. This is a practice project whrere I can learn new things and improve on my developer skillset.
