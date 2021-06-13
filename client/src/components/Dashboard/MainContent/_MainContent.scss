@@ -1,0 +1,18 @@
+.metronome-container {
+  flex: 8;
+  display: grid;
+  place-content: center;
+}
+@media screen and (max-width: 1250px) {
+  .metronome-container {
+    flex: 7;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .metronome-container {
+    flex: 6;
+    .metronome {
+      margin: 1rem;
+    }
+  }
+}

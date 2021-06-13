@@ -56,20 +56,33 @@ button {
   color: $accent-clr;
 }
 .primary-btn {
-  border: none;
+  @include button();
   color: $light-clr;
   font-size: 1.5rem;
   line-height: 1.5rem;
   background-color: $accent-clr;
-  width: fit-content;
   padding: 1.25rem 2rem;
-  border-radius: 25px;
-  transition: all 0.25s;
-  cursor: pointer;
+  &:hover {
+    color: $light2-clr;
+    background-color: $hover-clr;
+  }
 }
-.primary-btn:hover {
-  color: $light2-clr;
-  background-color: $hover-clr;
+
+.secondary-btn {
+  @include button();
+  padding: 0.5rem;
+  background-color: #ccc;
+  margin: auto;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  svg {
+    color: #e94235;
+    margin-right: 0.5rem;
+  }
+  &:hover {
+    background-color: darken(#ccc, 10);
+  }
 }
 
 .logo,
@@ -81,9 +94,12 @@ button {
   color: $muted-text;
   font-size: 0.9rem;
 }
+
 .App {
   background-color: $light-clr;
   color: $dark-text;
+}
+.dash-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,8 +107,13 @@ button {
 }
 .container {
   display: flex;
-  background: $light2-clr;
-  border-radius: 25px;
-  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.66);
+  @include container();
   margin: 0 1rem;
+  width: 80vw;
+  position: relative;
+}
+@media screen and (max-width: 1350px) {
+  .container {
+    width: 90vw;
+  }
 }

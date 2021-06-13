@@ -1,27 +1,24 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //Components
-import MainContent from './components/MainContent/MainContent';
-import Sidebar from './components/Sidebar/Sidebar';
+import Dashboard from './components/Dashboard/Dashboard';
+import Auth from './components/Auth/Auth';
+import Home from './components/Home/Home';
+
 //CSS
 import './css/main.min.css';
 
-import { getItems } from './actions/items';
-
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
-
   return (
-    <div className="App">
-      <main className="container">
-        <Sidebar />
-        <MainContent />
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/auth" exact component={Auth} />
+
+          <Route path="/dashboard" exact component={Dashboard} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

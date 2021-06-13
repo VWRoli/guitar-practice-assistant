@@ -7,18 +7,29 @@
 .form-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  height: auto;
 }
 .title-group {
   grid-column: span 3;
   margin-bottom: 0.5rem;
 }
 .title-group input {
-  width: 90%;
+  width: 80%;
+}
+.duration-group,
+.type-group {
+  display: flex;
+  flex-direction: column;
+  input {
+    max-width: 80%;
+  }
 }
 #add-new-item-btn {
   justify-self: end;
+  align-self: flex-end;
   width: 3rem;
   border-radius: 5px;
+  padding: 0.35rem;
   border: none;
 }
 input,
@@ -38,11 +49,7 @@ select {
   width: 100%;
   text-align: center;
 }
-.form-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: auto;
-}
+
 .form-group.hidden {
   max-height: 0;
   overflow: hidden;

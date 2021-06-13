@@ -1,0 +1,28 @@
+.dash-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $dark-clr;
+  color: $light2-clr;
+  border-radius: 25px 25px 0 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 3px 10px -2px rgba(#fff, 0.35);
+}
+.dash-controls {
+  svg {
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    &:hover {
+      color: $hover-clr;
+      cursor: pointer;
+    }
+  }
+}
+.username {
+  color: $accent-clr;
+  font-weight: 700;
+}

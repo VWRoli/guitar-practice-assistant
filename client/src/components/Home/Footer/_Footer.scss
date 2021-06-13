@@ -1,0 +1,11 @@
+/*************? FOOTER ******************/
+#landing__footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: $dark-clr;
+  color: $light2-clr;
+  padding: 2rem;
+}
+#landing__footer .logo {
+  margin: 0;
+}

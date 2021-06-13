@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { createItem } from '../../../actions/items';
+import { createItem } from '../../../../actions/items';
 
 const AddNewItem = () => {
   const [visible, setVisible] = useState(true);
+  const user = JSON.parse(localStorage.getItem('guitar-pa-profile'));
+
   const [itemData, setItemData] = useState({
     title: '',
     duration: 5,
     type: 'excercise',
+    userId: user?.result._id,
   });
 
   const clear = () => {
     setItemData({
+      ...itemData,
       title: '',
       duration: 5,
-      type: 'excercise',
     });
   };
 
@@ -43,7 +46,7 @@ const AddNewItem = () => {
           />
         </div>
 
-        <div>
+        <div className="duration-group">
           <label htmlFor="duration">Duration</label>
           <input
             type="number"
@@ -59,7 +62,7 @@ const AddNewItem = () => {
           />
         </div>
 
-        <div>
+        <div className="type-group">
           <label htmlFor="type">Type</label>
           <select
             name="type"

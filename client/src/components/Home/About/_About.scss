@@ -1,0 +1,20 @@
+#landing__about {
+  background-color: $dark2-clr;
+  color: $light2-clr;
+  text-align: center;
+  padding: 3rem;
+  padding-bottom: 5rem;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+#landing__about h2 {
+  padding-top: 2rem;
+}
+#landing__about h3 {
+  margin: 3rem;
+}
+.landing__about-text {
+  width: 50vw;
+  margin: auto;
+}
