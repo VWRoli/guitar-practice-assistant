@@ -3,7 +3,7 @@ import PracticeItem from '../models/practiceItem.js';
 
 export const getItems = async (req, res) => {
   try {
-    const practiceItems = await PracticeItem.find();
+    const practiceItems = await PracticeItem.find({ userId: req.userId });
 
     res.status(200).json(practiceItems);
   } catch (error) {
@@ -12,8 +12,10 @@ export const getItems = async (req, res) => {
 };
 
 export const createItem = async (req, res) => {
-  const item = req.body;
-  const newItem = new PracticeItem(item);
+  const newItem = new PracticeItem({
+    ...req.body,
+  });
+
   try {
     await newItem.save();
 

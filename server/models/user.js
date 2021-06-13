@@ -7,6 +7,13 @@ const userSchema = mongoose.Schema({
   id: { type: String },
 });
 
+//Set up relationship between users and practice items
+userSchema.virtual('items', {
+  ref: 'PracticeItem',
+  localField: '_id',
+  foreignField: 'userId',
+});
+
 //Remove password and other sensitive information from response
 userSchema.methods.toJSON = function () {
   const user = this;

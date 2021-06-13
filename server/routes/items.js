@@ -4,7 +4,7 @@ import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', getItems);
+router.get('/', auth, getItems);
 router.post('/', auth, createItem);
 router.delete('/:id', auth, deleteItem);
 

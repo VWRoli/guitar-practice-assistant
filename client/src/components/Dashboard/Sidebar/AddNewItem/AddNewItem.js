@@ -5,10 +5,13 @@ import { createItem } from '../../../../actions/items';
 
 const AddNewItem = () => {
   const [visible, setVisible] = useState(true);
+  const user = JSON.parse(localStorage.getItem('guitar-pa-profile'));
+
   const [itemData, setItemData] = useState({
     title: '',
     duration: 5,
     type: 'excercise',
+    userId: user?.result._id,
   });
 
   const clear = () => {
@@ -16,6 +19,7 @@ const AddNewItem = () => {
       title: '',
       duration: 5,
       type: 'excercise',
+      userId: null,
     });
   };
 
