@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 //import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
+import { Link } from 'react-router-dom';
 //Components
 import Input from './Input';
 import Error from '../Error/Error';
@@ -60,9 +61,11 @@ const Auth = ({ isSignup, setIsSignup }) => {
     <section id="auth">
       <div className="auth__bg-overlay"></div>
       <header className="auth__main-header">
-        <h1 className="logo">
-          <span className="accent-clr">Guitar</span> PA
-        </h1>
+        <Link to="/">
+          <h1 className="logo">
+            <span className="accent-clr">Guitar</span> PA
+          </h1>
+        </Link>
       </header>
       <form className="auth__form" onSubmit={handleSubmit}>
         <header className="form-header">

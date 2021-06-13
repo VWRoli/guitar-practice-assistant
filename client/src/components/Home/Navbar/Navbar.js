@@ -14,9 +14,15 @@ const Navbar = ({ setIsSignup }) => {
   return (
     <nav className="landing__nav-container">
       <div className="landing__nav-burger">
-        <h1 className="logo">
-          <span className="accent-clr">Guitar</span>PA
-        </h1>
+        <LinkScroll
+          to="landing__hero"
+          smooth={true}
+          offset={-80}
+          duration={500}>
+          <h1 className="logo">
+            <span className="accent-clr">Guitar</span>PA
+          </h1>
+        </LinkScroll>
         <FaBars id="burger-icon" onClick={handleToggle} />
       </div>
       <div

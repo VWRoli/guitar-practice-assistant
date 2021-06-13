@@ -25,6 +25,14 @@
   margin: 1rem 2rem;
   cursor: pointer;
 }
+.landing__nav-burger {
+  a {
+    cursor: pointer;
+    &:hover {
+      color: unset !important;
+    }
+  }
+}
 .landing__nav-center li a,
 .landing__nav-account li a {
   font-size: 1.25rem;

@@ -23,6 +23,12 @@
   background-color: $dark-clr;
   padding: 1rem 1rem 1rem 10vw;
   color: $light2-clr;
+  a {
+    cursor: pointer;
+    &:hover {
+      color: unset !important;
+    }
+  }
   h1 {
     margin: 0;
   }
