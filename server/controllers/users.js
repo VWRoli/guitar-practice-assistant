@@ -54,7 +54,7 @@ export const signup = async (req, res) => {
       { email: result.email, id: result._id },
       process.env.JWT_SECRET,
       {
-        expiresIn: '1h',
+        expiresIn: '30d',
       }
     );
 

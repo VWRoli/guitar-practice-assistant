@@ -1,6 +1,11 @@
 import { AUTH, LOGOUT } from '../constants/actionTypes';
 
-const authReducer = (state = { authData: null }, action) => {
+const authReducer = (
+  state = {
+    authData: null || JSON.parse(localStorage.getItem('guitar-pa-profile')),
+  },
+  action
+) => {
   switch (action.type) {
     case AUTH:
       localStorage.setItem(
