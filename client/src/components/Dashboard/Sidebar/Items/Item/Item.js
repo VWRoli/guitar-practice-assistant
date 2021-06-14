@@ -23,8 +23,7 @@ const Item = ({ item, clear }) => {
     handlePause,
     handleResume,
     handleReset,
-    disableItem,
-  } = useTimer(item.duration * 60);
+  } = useTimer(item);
 
   const handleDelete = () => {
     dispatch(deleteItem(item._id));
@@ -38,7 +37,7 @@ const Item = ({ item, clear }) => {
         borderLeft:
           item.type === 'song' ? '5px solid #ffb003' : ' 5px solid #4285f4',
       }}>
-      {disableItem ? (
+      {item.isDisabled ? (
         <div className="reset-btn-wrapper">
           <button className="reset-btn" onClick={handleReset}>
             <FaRedoAlt />
@@ -47,7 +46,7 @@ const Item = ({ item, clear }) => {
       ) : null}
       <div
         className={
-          disableItem
+          item.isDisabled
             ? 'practice-item-wrapper disable-item'
             : 'practice-item-wrapper'
         }>

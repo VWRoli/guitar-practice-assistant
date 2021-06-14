@@ -1,21 +1,22 @@
 import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateItem } from '../actions/items';
 
-const useTimer = (initialState) => {
-  const [timeLeft, setTimeLeft] = useState(initialState);
+const useTimer = (item) => {
+  const time = item.duration * 60;
+  const [timeLeft, setTimeLeft] = useState(time);
   const [timerActive, setTimerActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const countRef = useRef(null);
-
-  const [disableItem, setDisableItem] = useState(false);
+  const dispatch = useDispatch();
 
   const handleStart = () => {
-    // start button logic here
     setTimerActive(true);
     setIsPaused(true);
     countRef.current = setInterval(() => {
       setTimeLeft((prevTimeLeft) => {
         if (prevTimeLeft === 1) {
-          setDisableItem(true);
+          dispatch(updateItem(item._id, { ...item, isDisabled: true }));
           clearInterval(countRef.current);
         }
         return prevTimeLeft - 1;
@@ -24,18 +25,16 @@ const useTimer = (initialState) => {
   };
 
   const handlePause = () => {
-    // Pause button logic here
     clearInterval(countRef.current);
     setIsPaused(false);
   };
 
   const handleResume = () => {
-    // Resume button logic here
     setIsPaused(true);
     countRef.current = setInterval(() => {
       setTimeLeft((prevTimeLeft) => {
         if (prevTimeLeft === 1) {
-          setDisableItem(true);
+          dispatch(updateItem(item._id, { ...item, isDisabled: true }));
           clearInterval(countRef.current);
         }
         return prevTimeLeft - 1;
@@ -44,12 +43,11 @@ const useTimer = (initialState) => {
   };
 
   const handleReset = () => {
-    // Reset button logic here
     clearInterval(countRef.current);
     setTimerActive(false);
     setIsPaused(false);
-    setTimeLeft(initialState);
-    setDisableItem(false);
+    setTimeLeft(time);
+    dispatch(updateItem(item._id, { ...item, isDisabled: false }));
   };
 
   return {
@@ -60,7 +58,6 @@ const useTimer = (initialState) => {
     handlePause,
     handleResume,
     handleReset,
-    disableItem,
   };
 };
 

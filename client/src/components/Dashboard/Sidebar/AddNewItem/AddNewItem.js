@@ -13,7 +13,7 @@ const AddNewItem = ({ clear, setItemData, itemData }) => {
 
   useEffect(() => {
     if (item) setItemData(item);
-  }, [currentId, item]);
+  }, [item]);
 
   const dispatch = useDispatch();
 
@@ -54,8 +54,8 @@ const AddNewItem = ({ clear, setItemData, itemData }) => {
             name="duration"
             value={itemData.duration}
             placeholder="Min"
-            min="0"
-            max="99"
+            min="1"
+            max="60"
             required
             onChange={(e) =>
               setItemData({ ...itemData, duration: e.target.value })
