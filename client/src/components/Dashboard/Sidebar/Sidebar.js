@@ -3,7 +3,6 @@ import { FaGuitar } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { setCurrentId } from '../../../actions/items';
 //Components
-
 import AddNewItem from './AddNewItem/AddNewItem';
 import Items from './Items/Items';
 

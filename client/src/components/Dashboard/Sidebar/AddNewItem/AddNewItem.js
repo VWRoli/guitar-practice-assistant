@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  createItem,
-  setCurrentId,
-  updateItem,
-} from '../../../../actions/items';
+import { createItem, updateItem } from '../../../../actions/items';
 
 const AddNewItem = ({ clear, setItemData, itemData }) => {
   const [visible, setVisible] = useState(true);
@@ -26,6 +22,10 @@ const AddNewItem = ({ clear, setItemData, itemData }) => {
     if (currentId) {
       dispatch(updateItem(currentId, itemData));
     } else {
+      //after editing an item we have to remove the id otherwise we create a new item with the same ud
+      if (itemData._id) {
+        delete itemData._id;
+      }
       dispatch(createItem(itemData));
     }
     clear();

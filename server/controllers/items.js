@@ -16,6 +16,8 @@ export const createItem = async (req, res) => {
     ...req.body,
   });
 
+  console.log(newItem);
+
   try {
     await newItem.save();
 
@@ -46,11 +48,9 @@ export const updateItem = async (req, res) => {
     return res.status(404).json('No item with that ID');
   }
 
-  const updatedItem = await PracticeItem.findByIdAndUpdate(
-    _id,
-    { ...item, _id },
-    { new: true }
-  );
+  const updatedItem = await PracticeItem.findByIdAndUpdate(_id, item, {
+    new: true,
+  });
 
   res.json(updatedItem);
 };
