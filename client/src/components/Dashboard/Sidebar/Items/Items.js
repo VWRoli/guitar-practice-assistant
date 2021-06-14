@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Item from './Item/Item';
 import Loading from '../../../Loading/Loading';
 import Error from '../../../Error/Error';
-const Items = () => {
+const Items = ({ clear }) => {
   const isLoading = useSelector((state) => state.items.isLoading);
   const isError = useSelector((state) => state.items.isError);
   const items = useSelector((state) => state.items.items);
@@ -26,7 +26,7 @@ const Items = () => {
   return (
     <ul>
       {items.map((item) => (
-        <Item key={item._id} item={item} />
+        <Item key={item._id} item={item} clear={clear} />
       ))}
     </ul>
   );

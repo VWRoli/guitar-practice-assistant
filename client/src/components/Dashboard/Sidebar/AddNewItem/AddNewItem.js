@@ -7,10 +7,9 @@ import {
   updateItem,
 } from '../../../../actions/items';
 
-const AddNewItem = () => {
+const AddNewItem = ({ clear, setItemData, itemData }) => {
   const [visible, setVisible] = useState(true);
   const currentId = useSelector((state) => state.items.currentId);
-  const user = JSON.parse(localStorage.getItem('guitar-pa-profile'));
 
   const item = useSelector((state) =>
     currentId ? state.items.items.find((item) => item._id === currentId) : null
@@ -19,25 +18,6 @@ const AddNewItem = () => {
   useEffect(() => {
     if (item) setItemData(item);
   }, [currentId, item]);
-
-  const [itemData, setItemData] = useState({
-    title: '',
-    duration: '',
-    type: 'excercise',
-    userId: user?.result._id,
-    isDisabled: false,
-  });
-
-  const clear = () => {
-    dispatch(setCurrentId(null));
-    setItemData({
-      ...itemData,
-      title: '',
-      duration: '',
-      type: 'excercise',
-      isDisabled: false,
-    });
-  };
 
   const dispatch = useDispatch();
 

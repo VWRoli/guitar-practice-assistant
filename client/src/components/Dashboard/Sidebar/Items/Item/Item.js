@@ -13,7 +13,7 @@ import { deleteItem, setCurrentId } from '../../../../../actions/items';
 import useTimer from '../../../../../hooks/useTimer';
 import { formatTime } from '../../../../../utils/helpers';
 
-const Item = ({ item }) => {
+const Item = ({ item, clear }) => {
   const dispatch = useDispatch();
   const {
     timeLeft,
@@ -25,6 +25,11 @@ const Item = ({ item }) => {
     handleReset,
     disableItem,
   } = useTimer(item.duration * 60);
+
+  const handleDelete = () => {
+    dispatch(deleteItem(item._id));
+    clear();
+  };
 
   return (
     <li
@@ -51,10 +56,7 @@ const Item = ({ item }) => {
             className="edit-item"
             onClick={() => dispatch(setCurrentId(item._id))}
           />
-          <FaTimes
-            className="close-item"
-            onClick={() => dispatch(deleteItem(item._id))}
-          />
+          <FaTimes className="close-item" onClick={handleDelete} />
         </div>
         <h2 className="practice-item-title">{item.title}</h2>
         <div className="practice-item-details">
