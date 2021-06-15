@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import PracticeItem from '../models/practiceItem.js';
+import createHttpError from 'http-errors';
 
 export const getItems = async (req, res) => {
   try {
@@ -21,34 +22,40 @@ export const createItem = async (req, res) => {
 
     res.status(201).json(newItem);
   } catch (error) {
-    res.status(409).json(error);
+    res.status(400).json(error);
   }
 };
 
 export const deleteItem = async (req, res) => {
   const { id } = req.params;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id))
+      throw createHttpError(406, 'No post with that ID.');
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json('No post with that ID');
+    const task = await PracticeItem.findByIdAndRemove(id);
+
+    if (!task) throw createHttpError(406, 'No post with that ID.');
+
+    res.json({ message: 'Item deleted successfully' });
+  } catch (error) {
+    res.status(400).json(error);
   }
-
-  await PracticeItem.findByIdAndRemove(id);
-
-  res.json({ message: 'Item deleted successfully' });
 };
 
 export const updateItem = async (req, res) => {
   const { id: _id } = req.params;
+  try {
+    const item = req.body;
 
-  const item = req.body;
+    if (!mongoose.Types.ObjectId.isValid(_id))
+      throw createHttpError(404, 'No post with that ID.');
 
-  if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).json('No item with that ID');
+    const updatedItem = await PracticeItem.findByIdAndUpdate(_id, item, {
+      new: true,
+    });
+
+    res.json(updatedItem);
+  } catch (error) {
+    res.status(400).json(error);
   }
-
-  const updatedItem = await PracticeItem.findByIdAndUpdate(_id, item, {
-    new: true,
-  });
-
-  res.json(updatedItem);
 };

@@ -8,7 +8,7 @@ export const signin = (formData, history) => async (dispatch) => {
     dispatch({ type: AUTH, payload: data });
     history.push('/dashboard');
   } catch (error) {
-    dispatch({ type: SET_ERROR, payload: error.message });
+    dispatch({ type: SET_ERROR, payload: error.response.data.error.message });
   }
 };
 export const signup = (formData, history) => async (dispatch) => {
@@ -19,6 +19,6 @@ export const signup = (formData, history) => async (dispatch) => {
 
     history.push('/dashboard');
   } catch (error) {
-    dispatch({ type: SET_ERROR, payload: error.message });
+    dispatch({ type: SET_ERROR, payload: error.response.data.error.message });
   }
 };
