@@ -16,8 +16,6 @@ export const createItem = async (req, res) => {
     ...req.body,
   });
 
-  console.log(newItem);
-
   try {
     await newItem.save();
 

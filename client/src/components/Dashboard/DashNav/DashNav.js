@@ -16,7 +16,7 @@ const DashNav = () => {
   return (
     <nav className="dash-nav">
       <div>
-        Logged in as, <span className="username">{user?.result.username}</span>
+        Logged in as, <span className="username">{user?.user.username}</span>
       </div>
       <div className="dash-controls">
         <FaUserEdit />

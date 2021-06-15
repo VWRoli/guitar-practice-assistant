@@ -7,7 +7,6 @@ const Input = ({ name, type, placeholder, autoFocus, handleChange }) => {
         name={name}
         placeholder={placeholder}
         autoFocus={autoFocus}
-        required
         onChange={handleChange}
       />
     </div>

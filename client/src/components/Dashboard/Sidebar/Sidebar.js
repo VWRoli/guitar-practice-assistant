@@ -8,12 +8,13 @@ import Items from './Items/Items';
 
 const Sidebar = () => {
   const user = JSON.parse(localStorage.getItem('guitar-pa-profile'));
+
   const dispatch = useDispatch();
   const [itemData, setItemData] = useState({
     title: '',
     duration: '',
     type: 'excercise',
-    userId: user?.result._id,
+    userId: user?.user._id,
     isDisabled: false,
   });
 
