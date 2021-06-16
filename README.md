@@ -2,7 +2,7 @@
 
 <img src="client/src/assets/guitar-pa.png"/>
 
-[Live Demo](https://guitar-pa.netlify.app/) (username: demoUser1 password: 123456)
+[Live Demo](https://guitar-pa.netlify.app/) (username: demoUser1 password: 123456Aa!)
 
 ## Intro
 
