@@ -6,6 +6,7 @@ import {
   SET_ERROR,
   SET_CURRENT_ID,
   UPDATE_ITEM,
+  UNSET_ERROR,
 } from '../constants/actionTypes';
 
 const defaultState = {
@@ -36,6 +37,8 @@ const itemsReducer = (state = defaultState, action) => {
         errorMsg: action.payload,
         isLoading: false,
       };
+    case UNSET_ERROR:
+      return { ...state, isError: false, errorMsg: '' };
     case SET_CURRENT_ID:
       return { ...state, currentId: action.payload };
     case UPDATE_ITEM:

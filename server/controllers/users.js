@@ -22,7 +22,7 @@ export const signin = async (req, res, next) => {
   }
 };
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const user = new User(req.body);
   try {
     const existingUser = await User.findOne({ email: user.email });

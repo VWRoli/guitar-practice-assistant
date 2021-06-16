@@ -7,10 +7,12 @@ import {
   SET_LOADING,
   SET_CURRENT_ID,
   UPDATE_ITEM,
+  UNSET_ERROR,
 } from '../constants/actionTypes';
 
 export const getItems = () => async (dispatch) => {
   try {
+    dispatch({ type: UNSET_ERROR });
     dispatch({ type: SET_LOADING });
     const { data } = await api.fetchItems();
 
@@ -58,5 +60,15 @@ export const setCurrentId = (id) => async (dispatch) => {
     dispatch({ type: SET_CURRENT_ID, payload: id });
   } catch (error) {
     console.log(error);
+    dispatch({ type: SET_ERROR, payload: error.message });
+  }
+};
+
+export const removeError = () => async (dispatch) => {
+  try {
+    dispatch({ type: UNSET_ERROR });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: SET_ERROR, payload: error.message });
   }
 };

@@ -1,9 +1,15 @@
 .error-container {
-  grid-column: span 3;
   color: $error-clr;
-  text-align: center;
-
-  .error-sign {
-    font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(243, 175, 175);
+  min-width: 20rem;
+  padding: 0.75rem 1rem;
+  margin: auto;
+  border: 2px solid $error-clr;
+  border-radius: 15px;
+  #close-msg {
+    cursor: pointer;
   }
 }
