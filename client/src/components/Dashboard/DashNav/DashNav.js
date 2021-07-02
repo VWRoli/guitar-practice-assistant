@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { LOGOUT } from '../../../constants/actionTypes';
 
-const DashNav = () => {
+const DashNav = ({ setEditProfile, editProfile }) => {
   const user = useSelector((state) => state.auth.authData);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const DashNav = () => {
         Logged in as, <span className="username">{user?.user.username}</span>
       </div>
       <div className="dash-controls">
-        <FaUserEdit />
+        <FaUserEdit onClick={() => setEditProfile(!editProfile)} />
         <FaSignOutAlt onClick={logout} />
       </div>
     </nav>

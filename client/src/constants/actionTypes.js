@@ -9,3 +9,8 @@ export const UNSET_ERROR = 'UNSET_ERROR';
 
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+
+export const SET_USER_ERROR = 'SET_USER_ERROR';
+export const FETCH_USER = 'FETCH_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_USER_MSG = 'UPDATE_USER_MSG';

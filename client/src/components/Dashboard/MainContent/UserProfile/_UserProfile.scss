@@ -1,0 +1,45 @@
+.user-profile {
+  flex: 8;
+  display: grid;
+  place-content: center;
+  position: relative;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .primary-btn {
+    margin: 1rem auto;
+  }
+  .secondary-btn {
+    &:hover {
+      color: $light-clr;
+      background-color: $error-clr;
+    }
+  }
+}
+
+.profile-update-success {
+  border: 2px solid green;
+  background-color: #b9f8b6;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+}
+.close-edit-profile {
+  font-size: 2rem;
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  cursor: pointer;
+  color: $muted-text;
+
+  &:hover {
+    color: $error-clr;
+  }
+}

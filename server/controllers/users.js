@@ -42,11 +42,11 @@ export const signup = async (req, res, next) => {
 export const getProfile = async (req, res, next) => {
   const _id = req.userId;
   try {
-    const user = await User.find({ _id });
+    const [user] = await User.find({ _id });
 
     if (!user) throw createHttpError(404, `Couldn't find user`);
 
-    res.status(200).json({ user });
+    res.status(200).json(user);
   } catch (error) {
     next(error);
   }
@@ -61,11 +61,11 @@ export const updateProfile = async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(_id))
       throw createHttpError(404, 'No user with that ID.');
 
-    const updatedUser = await User.findByIdAndUpdate({ _id }, user, {
+    await User.findByIdAndUpdate({ _id }, user, {
       new: true,
     });
 
-    res.status(200).json({ updatedUser });
+    res.status(200).json({ message: 'User profile updated successfully!' });
   } catch (error) {
     next(error);
   }

@@ -21,3 +21,8 @@ export const deleteItem = (id) => API.delete(`/items/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+
+export const getProfile = () => API.get('/user/me');
+
+export const updateProfile = (updatedProfile) =>
+  API.patch('/user/me', updatedProfile);
