@@ -4,6 +4,7 @@ import {
   FETCH_USER,
   UPDATE_USER,
   UPDATE_USER_MSG,
+  DELETE_USER,
 } from '../constants/actionTypes';
 
 export const getProfile = () => async (dispatch) => {
@@ -39,6 +40,19 @@ export const updateProfile = (formData) => async (dispatch) => {
     dispatch({
       type: SET_USER_ERROR,
       payload: error.response.data.error.message,
+    });
+  }
+};
+
+export const deleteProfile = () => async (dispatch) => {
+  try {
+    await api.deleteProfile();
+    dispatch({ type: DELETE_USER });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: SET_USER_ERROR,
+      payload: error.response.data.message,
     });
   }
 };

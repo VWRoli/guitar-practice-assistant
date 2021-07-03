@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile } from '../../../../actions/user';
-import { UPDATE_USER_MSG } from '../../../../constants/actionTypes';
+import { updateProfile, deleteProfile } from '../../../../actions/user';
+import { LOGOUT, UPDATE_USER_MSG } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
 
 const UserProfile = ({ setEditProfile }) => {
   const user = useSelector((state) => state.user.user);
   const msg = useSelector((state) => state.user.message);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [formData, setFormData] = useState({
     username: user.username,
@@ -29,6 +31,12 @@ const UserProfile = ({ setEditProfile }) => {
     e.preventDefault();
     dispatch(updateProfile(formData));
     deleteUserMsg();
+  };
+
+  const deleteUserProfile = () => {
+    dispatch(deleteProfile());
+    dispatch({ type: LOGOUT });
+    history.push('/');
   };
 
   return (
@@ -67,7 +75,9 @@ const UserProfile = ({ setEditProfile }) => {
         <button type="submit" className="primary-btn">
           Submit
         </button>
-        <button className="secondary-btn">Delete Profile</button>
+        <button className="secondary-btn" onClick={deleteUserProfile}>
+          Delete Profile
+        </button>
       </form>
     </section>
   );

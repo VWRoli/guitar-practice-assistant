@@ -15,7 +15,6 @@ export const getItems = () => async (dispatch) => {
     dispatch({ type: UNSET_ERROR });
     dispatch({ type: SET_LOADING });
     const { data } = await api.fetchItems();
-
     dispatch({ type: FETCH_ITEMS, payload: data });
   } catch (error) {
     console.log(error);
