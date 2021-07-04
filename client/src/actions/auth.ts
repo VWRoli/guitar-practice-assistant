@@ -39,6 +39,7 @@ export const signup =
 export const logout = () => async (dispatch: Dispatch<AuthAction>) => {
   try {
     dispatch({ type: ActionType.LOGOUT });
+    console.log('logout');
   } catch (error) {
     dispatch({
       type: ActionType.SET_ERROR,

@@ -48,6 +48,7 @@ export const updateProfile =
 export const deleteProfile = () => async (dispatch: Dispatch<UserAction>) => {
   try {
     await api.deleteProfile();
+    console.log('delete');
     dispatch({ type: ActionType.DELETE_USER });
   } catch (error) {
     console.log(error.response);

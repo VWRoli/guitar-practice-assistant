@@ -46,7 +46,7 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
   const deleteUserProfile = () => {
     dispatch(deleteProfile());
     dispatch(logout());
-    history.push('/');
+    //history.push('/');
   };
 
   return (
@@ -85,10 +85,13 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
         <button type="submit" className="primary-btn">
           Submit
         </button>
-        <button className="secondary-btn" onClick={deleteUserProfile}>
-          Delete Profile
-        </button>
       </form>
+      <button
+        type="button"
+        className="secondary-btn"
+        onClick={deleteUserProfile}>
+        Delete Profile
+      </button>
     </section>
   );
 };
