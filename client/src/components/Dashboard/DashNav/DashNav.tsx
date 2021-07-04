@@ -13,7 +13,8 @@ const DashNav: React.FC<Props> = ({
   setEditProfile,
   editProfile,
 }): JSX.Element => {
-  const user = useSelector((state: State) => state.auth.authData);
+  const user = JSON.parse(localStorage.getItem('guitar-pa-profile') || '');
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const DashNav: React.FC<Props> = ({
   return (
     <nav className="dash-nav">
       <div>
-        Logged in as, <span className="username">{user?.user?.username}</span>
+        Logged in as, <span className="username">{user?.user.username}</span>
       </div>
       <div className="dash-controls">
         <FaUserEdit onClick={() => setEditProfile(!editProfile)} />

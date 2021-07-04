@@ -20,7 +20,6 @@ const Sidebar = () => {
 
   const dispatch = useDispatch();
   const [itemData, setItemData] = useState<ItemType>({
-    _id: '',
     title: '',
     duration: 0,
     type: 'excercise',
