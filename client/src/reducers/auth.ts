@@ -1,16 +1,26 @@
 import { AuthAction } from '../actions/authTypes';
 import { ActionType } from '../constants/actionTypes';
 
-type State = {
-  //todo
-  authData: any;
+export type AuthDataType = {
+  token: string;
+  user: {
+    email: string;
+    username: string;
+    __v: number;
+    _id: string;
+  };
 };
 
-const defaultState: State = {
-  //todo JSON.parse(localStorage.getItem('guitar-pa-profile') || '{}'
-  authData: null,
+type State = {
+  authData: AuthDataType | null;
 };
-console.log(defaultState);
+
+const localValue = localStorage.getItem('guitar-pa-profile');
+
+const defaultState: State = {
+  authData: localValue !== null ? JSON.parse(localValue) : null,
+};
+
 const authReducer = (state = defaultState, action: AuthAction) => {
   switch (action.type) {
     case ActionType.AUTH:
@@ -21,7 +31,7 @@ const authReducer = (state = defaultState, action: AuthAction) => {
       return { ...state, authData: action?.payload };
     case ActionType.LOGOUT:
       localStorage.clear();
-      return { ...state, authData: '{}' };
+      return { ...state, authData: null };
 
     default:
       return state;

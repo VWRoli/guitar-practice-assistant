@@ -1,9 +1,10 @@
 import { ActionType } from '../constants/actionTypes';
+import { AuthDataType } from '../reducers/auth';
 
 interface AuthenticateAction {
   type: ActionType.AUTH;
   //todo check data type
-  payload: any;
+  payload: AuthDataType;
 }
 interface SetAuthErrorAction {
   type: ActionType.SET_ERROR;
