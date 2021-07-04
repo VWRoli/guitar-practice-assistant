@@ -10,7 +10,7 @@ Started as a vanilla JS project, which turned into a full stack MERN application
 
 ## Description
 
-The app is build with MERN stack and using RESTful API design. Redux for state management, Node & Express for API, MongoDB as database. Uses JSON Web Tokens for authentication.
+The app is build with MERN stack and using RESTful API design. The client side is written in Typescript. Redux for state management, Node & Express for API, MongoDB as database. Uses JSON Web Tokens for authentication.
 
 The app is built with a robust and easily scalable structure.
 
@@ -20,6 +20,7 @@ You can create new users, and log in with existing one, each user has it's own p
 
 ### Front-end:
 
+- Typescript
 - React
 - Redux
 - Axios

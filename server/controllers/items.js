@@ -30,11 +30,9 @@ export const deleteItem = async (req, res) => {
   const { id } = req.params;
   try {
     if (!mongoose.Types.ObjectId.isValid(id))
-      throw createHttpError(406, 'No post with that ID.');
+      throw createHttpError(404, 'No item with that ID.');
 
-    const task = await PracticeItem.findByIdAndRemove(id);
-
-    if (!task) throw createHttpError(406, 'No post with that ID.');
+    await PracticeItem.findByIdAndRemove(id);
 
     res.json({ message: 'Item deleted successfully' });
   } catch (error) {
@@ -48,7 +46,7 @@ export const updateItem = async (req, res) => {
     const item = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(_id))
-      throw createHttpError(404, 'No post with that ID.');
+      throw createHttpError(404, 'No item with that ID.');
 
     const updatedItem = await PracticeItem.findByIdAndUpdate(_id, item, {
       new: true,
