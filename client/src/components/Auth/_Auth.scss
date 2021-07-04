@@ -79,6 +79,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+  .signup-btn {
+    margin-bottom: 1rem !important;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .auth__main-header {
     z-index: 3;
