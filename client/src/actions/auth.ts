@@ -35,3 +35,14 @@ export const signup =
       });
     }
   };
+
+export const logout = () => async (dispatch: Dispatch<AuthAction>) => {
+  try {
+    dispatch({ type: ActionType.LOGOUT });
+  } catch (error) {
+    dispatch({
+      type: ActionType.SET_ERROR,
+      payload: 'Error logging out',
+    });
+  }
+};

@@ -1,8 +1,8 @@
 import { FaSignOutAlt, FaUserEdit } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { ActionType } from '../../../constants/actionTypes';
-import { State } from '../../../reducers';
+import { logout } from '../../../actions/auth';
 
 type Props = {
   editProfile: boolean;
@@ -13,14 +13,13 @@ const DashNav: React.FC<Props> = ({
   setEditProfile,
   editProfile,
 }): JSX.Element => {
-  const user = JSON.parse(localStorage.getItem('guitar-pa-profile') || '');
+  const user = JSON.parse(localStorage.getItem('guitar-pa-profile') || '{}');
 
   const history = useHistory();
   const dispatch = useDispatch();
 
-  //todo put this into the actions
-  const logout = () => {
-    dispatch({ type: ActionType.LOGOUT });
+  const logoutUser = () => {
+    dispatch(logout());
     history.push('/');
   };
 
@@ -31,7 +30,7 @@ const DashNav: React.FC<Props> = ({
       </div>
       <div className="dash-controls">
         <FaUserEdit onClick={() => setEditProfile(!editProfile)} />
-        <FaSignOutAlt onClick={logout} />
+        <FaSignOutAlt onClick={logoutUser} />
       </div>
     </nav>
   );

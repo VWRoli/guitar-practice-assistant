@@ -2,7 +2,7 @@ import { ActionType } from '../constants/actionTypes';
 import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
 import { ItemAction } from '../actions/itemTypes';
 
-type State = {
+type ItemsState = {
   isLoading: boolean;
   isError: boolean;
   errorMsg: string;
@@ -10,7 +10,7 @@ type State = {
   currentId?: string;
 };
 
-const defaultState: State = {
+const defaultState: ItemsState = {
   isLoading: false,
   isError: false,
   errorMsg: '',

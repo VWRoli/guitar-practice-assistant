@@ -1,7 +1,7 @@
 import { AuthAction } from '../actions/authTypes';
 import { ActionType } from '../constants/actionTypes';
 
-export type AuthDataType = {
+export interface AuthDataType {
   token: string;
   user: {
     email: string;
@@ -9,15 +9,15 @@ export type AuthDataType = {
     __v: number;
     _id: string;
   };
-};
+}
 
-type State = {
+type AuthState = {
   authData: AuthDataType | null;
 };
 
 const localValue = localStorage.getItem('guitar-pa-profile');
 
-const defaultState: State = {
+const defaultState: AuthState = {
   authData: localValue !== null ? JSON.parse(localValue) : null,
 };
 

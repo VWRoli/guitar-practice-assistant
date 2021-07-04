@@ -16,7 +16,7 @@ export type ItemType = {
 };
 
 const Sidebar = () => {
-  const user = JSON.parse(localStorage.getItem('guitar-pa-profile') || '');
+  const user = JSON.parse(localStorage.getItem('guitar-pa-profile') || '{}');
 
   const dispatch = useDispatch();
   const [itemData, setItemData] = useState<ItemType>({

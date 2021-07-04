@@ -3,7 +3,6 @@ import { AuthDataType } from '../reducers/auth';
 
 interface AuthenticateAction {
   type: ActionType.AUTH;
-  //todo check data type
   payload: AuthDataType;
 }
 interface SetAuthErrorAction {

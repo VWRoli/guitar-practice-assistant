@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { formDataType } from '../components/Auth/Auth';
+import { UpdateProfileFormData } from '../components/Dashboard/MainContent/UserProfile/UserProfile';
 import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -29,7 +30,6 @@ export const signUp = (formData: formDataType) =>
 
 export const getProfile = () => API.get('/user/me');
 
-//todo datatype
-export const updateProfile = (updatedProfile: any) =>
+export const updateProfile = (updatedProfile: UpdateProfileFormData) =>
   API.patch('/user/me', updatedProfile);
 export const deleteProfile = () => API.delete(`/user/me`);

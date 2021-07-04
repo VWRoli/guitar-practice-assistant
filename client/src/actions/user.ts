@@ -2,6 +2,7 @@ import * as api from '../api';
 import { Dispatch } from 'react';
 import { UserAction } from './userTypes';
 import { ActionType } from '../constants/actionTypes';
+import { UpdateProfileFormData } from '../components/Dashboard/MainContent/UserProfile/UserProfile';
 
 export const getProfile = () => async (dispatch: Dispatch<UserAction>) => {
   try {
@@ -16,8 +17,8 @@ export const getProfile = () => async (dispatch: Dispatch<UserAction>) => {
 };
 
 export const updateProfile =
-  //todo datatype
-  (formData: any) => async (dispatch: Dispatch<UserAction>) => {
+  (formData: UpdateProfileFormData) =>
+  async (dispatch: Dispatch<UserAction>) => {
     try {
       const { data } = await api.updateProfile(formData);
       const localUserData = JSON.parse(

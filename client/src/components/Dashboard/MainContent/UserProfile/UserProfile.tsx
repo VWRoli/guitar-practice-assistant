@@ -5,9 +5,14 @@ import { ActionType } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { State } from '../../../../reducers';
+import { logout } from '../../../../actions/auth';
 
 type Props = {
   setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export type UpdateProfileFormData = {
+  username: string;
+  email: string;
 };
 
 const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
@@ -16,7 +21,7 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<UpdateProfileFormData>({
     username: user.username,
     email: user.email,
   });
@@ -40,7 +45,7 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
 
   const deleteUserProfile = () => {
     dispatch(deleteProfile());
-    dispatch({ type: ActionType.LOGOUT });
+    dispatch(logout());
     history.push('/');
   };
 

@@ -1,7 +1,13 @@
 import { UserAction } from '../actions/userTypes';
 import { ActionType } from '../constants/actionTypes';
 
-const defaultState = {
+type UserState = {
+  user: any;
+  isUserError: boolean;
+  message: string;
+};
+
+const defaultState: UserState = {
   user: null,
   isUserError: false,
   message: '',

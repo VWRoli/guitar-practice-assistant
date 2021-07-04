@@ -1,9 +1,9 @@
 import { ActionType } from '../constants/actionTypes';
+import { AuthDataType } from '../reducers/auth';
 
 interface FetchUserAction {
   type: ActionType.FETCH_USER;
-  //todo payload datatype
-  payload: any;
+  payload: AuthDataType['user'];
 }
 
 interface SetUserErrorAction {
