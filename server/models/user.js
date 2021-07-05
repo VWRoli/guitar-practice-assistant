@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import PracticeItem from './practiceItem.js';
 
 const SALT_WORK_FACTOR = 10;
 
@@ -72,5 +73,12 @@ userSchema.methods.toJSON = function () {
 
   return userObject;
 };
+
+//Delete user tasks when user is removed
+userSchema.pre('remove', async function (next) {
+  const user = this;
+  await PracticeItem.deleteMany({ userId: user._id });
+  next();
+});
 
 export default mongoose.model('User', userSchema);

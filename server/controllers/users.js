@@ -54,7 +54,6 @@ export const getProfile = async (req, res, next) => {
 
 export const updateProfile = async (req, res, next) => {
   const _id = req.userId;
-
   try {
     const user = req.body;
 

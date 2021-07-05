@@ -1,7 +1,6 @@
 import { FaSignOutAlt, FaUserEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { ActionType } from '../../../constants/actionTypes';
 import { logout } from '../../../actions/auth';
 
 type Props = {

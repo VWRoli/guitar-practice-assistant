@@ -1,26 +1,23 @@
 import jwt from 'jsonwebtoken';
+import createHttpError from 'http-errors';
+import User from '../models/user.js';
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1];
-    //if (token) return;
-    const isCustomAuth = token.length < 500;
+    const token = req.header('Authorization').replace('Bearer ', '');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    let decodedData;
+    const user = await User.findOne({
+      _id: decoded.id,
+    });
+    if (!user) throw createHttpError(400, 'Invalid user ID');
 
-    if (token && isCustomAuth) {
-      //our custom token
-      decodedData = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = user._id;
 
-      req.userId = decodedData?.id;
-    } else {
-      //check google auth token
-      decodedData = jwt.decode(token);
-      req.userId = decodedData?.sub;
-    }
     next();
   } catch (error) {
     console.log(error);
+    res.status(401).send({ error: 'Please authenticate' });
   }
 };
 export default auth;
