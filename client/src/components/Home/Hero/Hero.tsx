@@ -1,4 +1,4 @@
-import Button from '../../utils/Button';
+import Button from '../../utils/Button/Button';
 import heroGuitar from '../../../assets/hero.jpg';
 
 const Hero = (): JSX.Element => {

@@ -6,9 +6,9 @@ import { signin, signup } from '../../actions/auth';
 import { Link } from 'react-router-dom';
 //Components
 import Input from './Input';
-import Error from '../Error/Error';
+import Message from '../utils/Message/Message';
 import { State } from '../../reducers';
-import Button from '../utils/Button';
+import Button from '../utils/Button/Button';
 
 export type formDataType = {
   username: string;
@@ -102,7 +102,7 @@ const Auth: React.FC<Props> = ({ isSignup, setIsSignup }): JSX.Element => {
               handleChange={handleChange}
             />
           )}
-          {isError && <Error />}
+          {isError && <Message />}
           <Button
             text={isSignup ? 'Create my account' : 'Log in to my account'}
             link={false}

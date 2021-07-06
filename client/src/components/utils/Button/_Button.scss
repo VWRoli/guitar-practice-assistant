@@ -1,0 +1,13 @@
+.primary-btn {
+  @include button();
+  color: $light-clr;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  background-color: $accent-clr;
+  padding: 1.25rem 2rem;
+  margin: 1rem auto;
+  &:hover {
+    color: $light2-clr;
+    background-color: $hover-clr;
+  }
+}

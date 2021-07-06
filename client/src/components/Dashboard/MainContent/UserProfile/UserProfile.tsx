@@ -4,7 +4,7 @@ import { updateProfile } from '../../../../actions/user';
 import { ActionType } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
 import { State } from '../../../../reducers';
-import Button from '../../../utils/Button';
+import Button from '../../../utils/Button/Button';
 
 type Props = {
   setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;

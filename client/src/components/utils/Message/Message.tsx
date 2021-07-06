@@ -1,7 +1,7 @@
 import { FaTimes } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeError } from '../../actions/items';
-import { State } from '../../reducers';
+import { removeError } from '../../../actions/items';
+import { State } from '../../../reducers';
 
 const Error = (): JSX.Element => {
   const msg = useSelector((state: State) => state.items.errorMsg);

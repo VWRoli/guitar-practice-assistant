@@ -7,7 +7,7 @@ import Home from './components/Home/Home';
 
 //CSS
 import './css/main.min.css';
-import NotFound from './components/Error/NotFound';
+import NotFound from './components/NotFound/NotFound';
 import { useSelector } from 'react-redux';
 import { State } from './reducers';
 

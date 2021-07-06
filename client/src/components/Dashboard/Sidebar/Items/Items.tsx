@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 //Components
 import Item from './Item/Item';
-import Loading from '../../../Loading/Loading';
-import Error from '../../../Error/Error';
+import Loading from '../../../utils/Loading/Loading';
+import Message from '../../../utils/Message/Message';
 import { State } from '../../../../reducers';
 
 type Props = {
@@ -20,19 +20,18 @@ const Items: React.FC<Props> = ({ clear }) => {
 
   //Error screen
   if (isError) {
-    return <Error />;
+    return <Message />;
   }
-  //No practice items
-  if (!items.length) {
-    return (
-      <p className="empty-items-text">You don't have any practice items yet.</p>
-    );
-  }
+
   return (
     <ul>
-      {items.map((item) => (
-        <Item key={item._id} item={item} clear={clear} />
-      ))}
+      {items.length ? (
+        items.map((item) => <Item key={item._id} item={item} clear={clear} />)
+      ) : (
+        <p className="empty-items-text">
+          You don't have any practice items yet.
+        </p>
+      )}
     </ul>
   );
 };

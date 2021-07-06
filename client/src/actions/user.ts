@@ -11,7 +11,7 @@ export const getProfile = () => async (dispatch: Dispatch<UserAction>) => {
   } catch (error) {
     dispatch({
       type: ActionType.SET_USER_ERROR,
-      payload: error.response.data.error.message,
+      payload: error.response?.data.error?.message,
     });
   }
 };
@@ -40,7 +40,7 @@ export const updateProfile =
     } catch (error) {
       dispatch({
         type: ActionType.SET_USER_ERROR,
-        payload: error.response.data.error.message,
+        payload: error.response?.data.error?.message,
       });
     }
   };

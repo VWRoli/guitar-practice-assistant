@@ -1,6 +1,7 @@
 import { FaExclamationTriangle } from 'react-icons/fa';
 import brokenStrings from '../../assets/not-found.png';
 import { Link } from 'react-router-dom';
+import Button from '../utils/Button/Button';
 
 const NotFound = (): JSX.Element => {
   return (
@@ -12,9 +13,7 @@ const NotFound = (): JSX.Element => {
 
       <h2>Sorry, we couldn't find that page.</h2>
 
-      <Link to="/" className="secondary-btn">
-        Back Home
-      </Link>
+      <Button text="Back Home" link={true} route="/" />
     </section>
   );
 };

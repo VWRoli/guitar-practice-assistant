@@ -52,36 +52,6 @@ button {
 .accent-clr {
   color: $accent-clr;
 }
-.primary-btn {
-  @include button();
-  color: $light-clr;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  background-color: $accent-clr;
-  padding: 1.25rem 2rem;
-  margin: 1rem auto;
-  &:hover {
-    color: $light2-clr;
-    background-color: $hover-clr;
-  }
-}
-
-.secondary-btn {
-  @include button();
-  padding: 0.5rem;
-  background-color: #ccc;
-  margin: auto;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  svg {
-    color: #e94235;
-    margin-right: 0.5rem;
-  }
-  &:hover {
-    background-color: darken(#ccc, 10);
-  }
-}
 
 .logo,
 .logo span,
