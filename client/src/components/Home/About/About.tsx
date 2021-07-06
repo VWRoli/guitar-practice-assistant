@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Button from '../../utils/Button';
 import guitarPlayer from '../../../assets/guitar-player.jpg';
 
 const About = (): JSX.Element => {
@@ -16,9 +16,7 @@ const About = (): JSX.Element => {
           focus on learning to play.
         </p>
         <h3>Join now</h3>
-        <Link to="/auth" className="primary-btn">
-          Create an account
-        </Link>
+        <Button text="Create an account" link={true} route="/auth" />
       </div>
     </section>
   );

@@ -52,6 +52,9 @@
 .form-body {
   display: flex;
   flex-direction: column;
+  hr {
+    margin-top: 1rem;
+  }
 }
 .auth__form-group {
   padding: 1rem 0;
@@ -64,9 +67,7 @@
   border: 1px solid $dark-text;
   font-size: 1.1rem;
 }
-.signup-btn {
-  margin: 1rem auto;
-}
+
 .login-switch {
   text-align: center;
   font-size: 0.9rem;

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Input from './Input';
 import Error from '../Error/Error';
 import { State } from '../../reducers';
+import Button from '../utils/Button';
 
 export type formDataType = {
   username: string;
@@ -102,9 +103,10 @@ const Auth: React.FC<Props> = ({ isSignup, setIsSignup }): JSX.Element => {
             />
           )}
           {isError && <Error />}
-          <button type="submit" className="primary-btn signup-btn">
-            {isSignup ? 'Create my account' : 'Log in to my account'}
-          </button>
+          <Button
+            text={isSignup ? 'Create my account' : 'Log in to my account'}
+            link={false}
+          />
 
           <hr />
 

@@ -26,10 +26,7 @@ const userReducer = (state = defaultState, action: UserAction) => {
       };
     case ActionType.UPDATE_USER_MSG:
       return { ...state, message: action.payload };
-    case ActionType.DELETE_USER: {
-      localStorage.clear();
-      return { ...state, user: null };
-    }
+
     default:
       return state;
   }

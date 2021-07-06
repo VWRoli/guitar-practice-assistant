@@ -4,6 +4,7 @@ import { updateProfile } from '../../../../actions/user';
 import { ActionType } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
 import { State } from '../../../../reducers';
+import Button from '../../../utils/Button';
 
 type Props = {
   setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
@@ -73,9 +74,7 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
             <p>{msg}</p>
           </div>
         )}
-        <button type="submit" className="primary-btn">
-          Submit
-        </button>
+        <Button text="Submit" link={false} />
       </form>
     </section>
   );

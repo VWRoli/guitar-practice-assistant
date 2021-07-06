@@ -200,14 +200,7 @@
     margin: auto;
   }
 }
-@media screen and (max-width: 600px) {
-  .landing__hero-text h1 span {
-    font-size: 2.5rem !important;
-  }
-  h1 {
-    font-size: 2.5rem;
-  }
-}
+
 @media screen and (max-width: 500px) {
   .landing__card-container,
   .landing__card-container.card-reverse {

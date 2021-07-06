@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Button from '../../utils/Button';
 import heroGuitar from '../../../assets/hero.jpg';
 
 const Hero = (): JSX.Element => {
@@ -14,9 +14,8 @@ const Hero = (): JSX.Element => {
           <br />
           practice routine helps you to get to the next level.
         </p>
-        <Link to="/auth" className="primary-btn">
-          Create a new account
-        </Link>
+
+        <Button text="Create a new account" link={true} route="/auth" />
       </div>
       <div className="landing__hero-img-wrapper">
         <img src={heroGuitar} alt="The App" />
