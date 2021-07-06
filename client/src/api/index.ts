@@ -32,4 +32,3 @@ export const getProfile = () => API.get('/user/me');
 
 export const updateProfile = (updatedProfile: UpdateProfileFormData) =>
   API.patch('/user/me', updatedProfile);
-export const deleteProfile = () => API.delete(`/user/me`);

@@ -74,11 +74,4 @@ userSchema.methods.toJSON = function () {
   return userObject;
 };
 
-//Delete user tasks when user is removed
-userSchema.pre('remove', async function (next) {
-  const user = this;
-  await PracticeItem.deleteMany({ userId: user._id });
-  next();
-});
-
 export default mongoose.model('User', userSchema);

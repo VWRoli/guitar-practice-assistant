@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile, deleteProfile } from '../../../../actions/user';
+import { updateProfile } from '../../../../actions/user';
 import { ActionType } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
 import { State } from '../../../../reducers';
-import { logout } from '../../../../actions/auth';
 
 type Props = {
   setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,7 +17,6 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
   const user = useSelector((state: State) => state.user.user);
   const msg = useSelector((state: State) => state.user.message);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [formData, setFormData] = useState<UpdateProfileFormData>({
     username: user.username,
@@ -42,12 +39,6 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
     dispatch(updateProfile(formData));
     deleteUserMsg();
   };
-
-  /*  const deleteUserProfile = () => {
-    dispatch(deleteProfile());
-    dispatch(logout());
-    history.push('/');
-  }; */
 
   return (
     <section className="user-profile">
@@ -86,12 +77,6 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
           Submit
         </button>
       </form>
-      {/* <button
-        type="button"
-        className="secondary-btn"
-        onClick={deleteUserProfile}>
-        Delete Profile
-      </button> */}
     </section>
   );
 };

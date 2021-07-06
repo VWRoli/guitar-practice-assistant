@@ -20,13 +20,8 @@ interface UpdateUserErrorMsgAction {
   payload: string;
 }
 
-interface DeleteUserAction {
-  type: ActionType.DELETE_USER;
-}
-
 export type UserAction =
   | FetchUserAction
   | SetUserErrorAction
   | UpdateUserAction
-  | UpdateUserErrorMsgAction
-  | DeleteUserAction;
+  | UpdateUserErrorMsgAction;
