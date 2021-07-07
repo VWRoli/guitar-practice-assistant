@@ -1,21 +1,22 @@
 import { FaTimes } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { removeError } from '../../../actions/items';
-import { State } from '../../../reducers';
 
-const Error = (): JSX.Element => {
-  const msg = useSelector((state: State) => state.items.errorMsg);
+type Props = {
+  msg: string;
+  isError: boolean;
+};
+
+const Error: React.FC<Props> = ({ msg, isError }): JSX.Element => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      {msg && (
-        <div className="error-container">
-          <p>{msg}</p>
-          <FaTimes id="close-msg" onClick={() => dispatch(removeError())} />
-        </div>
+    <div className={isError ? 'msg-container error' : 'msg-container success'}>
+      <p>{msg}</p>
+      {isError && (
+        <FaTimes id="close-msg" onClick={() => dispatch(removeError())} />
       )}
-    </>
+    </div>
   );
 };
 

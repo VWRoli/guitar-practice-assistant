@@ -1,5 +1,6 @@
 import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
 import { ActionType } from '../constants/actionTypes';
+import { AuthDataType } from '../reducers/auth';
 
 interface FetchItemsAction {
   type: ActionType.FETCH_ITEMS;
@@ -37,6 +38,24 @@ interface SetCurrentIdAction {
   type: ActionType.SET_CURRENT_ID;
   payload: string | undefined;
 }
+interface FetchUserAction {
+  type: ActionType.FETCH_USER;
+  payload: AuthDataType['user'];
+}
+
+interface SetUserErrorAction {
+  type: ActionType.SET_USER_ERROR;
+  payload: string;
+}
+
+interface UpdateUserAction {
+  type: ActionType.UPDATE_USER;
+}
+
+interface UpdateUserErrorMsgAction {
+  type: ActionType.UPDATE_USER_MSG;
+  payload: string;
+}
 
 export type ItemAction =
   | FetchItemsAction
@@ -46,4 +65,8 @@ export type ItemAction =
   | DeleteItemAction
   | SetLoadingAction
   | UnsetLoadingAction
-  | SetCurrentIdAction;
+  | SetCurrentIdAction
+  | FetchUserAction
+  | SetUserErrorAction
+  | UpdateUserAction
+  | UpdateUserErrorMsgAction;

@@ -4,7 +4,6 @@ import { ItemAction } from '../actions/itemTypes';
 
 type ItemsState = {
   isLoading: boolean;
-  isError: boolean;
   errorMsg: string;
   items: ItemType[];
   currentId?: string;
@@ -12,7 +11,6 @@ type ItemsState = {
 
 const defaultState: ItemsState = {
   isLoading: false,
-  isError: false,
   errorMsg: '',
   items: [],
   currentId: undefined,
@@ -34,12 +32,11 @@ const itemsReducer = (state = defaultState, action: ItemAction) => {
     case ActionType.SET_ERROR:
       return {
         ...state,
-        isError: true,
         errorMsg: action.payload,
         isLoading: false,
       };
     case ActionType.UNSET_ERROR:
-      return { ...state, isError: false, errorMsg: '' };
+      return { ...state, errorMsg: '' };
     case ActionType.SET_CURRENT_ID:
       return { ...state, currentId: action.payload };
     case ActionType.UPDATE_ITEM:

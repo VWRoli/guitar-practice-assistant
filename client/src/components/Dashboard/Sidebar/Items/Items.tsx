@@ -1,27 +1,23 @@
 import { useSelector } from 'react-redux';
+import { State } from '../../../../reducers';
 //Components
 import Item from './Item/Item';
 import Loading from '../../../utils/Loading/Loading';
 import Message from '../../../utils/Message/Message';
-import { State } from '../../../../reducers';
 
 type Props = {
   clear: () => void;
 };
 const Items: React.FC<Props> = ({ clear }) => {
   const isLoading = useSelector((state: State) => state.items.isLoading);
-  const isError = useSelector((state: State) => state.items.isError);
+  const errorMsg = useSelector((state: State) => state.items.errorMsg);
   const items = useSelector((state: State) => state.items.items);
 
   //Loading screen
-  if (isLoading) {
-    return <Loading />;
-  }
+  if (isLoading) return <Loading />;
 
   //Error screen
-  if (isError) {
-    return <Message />;
-  }
+  if (errorMsg) return <Message msg={errorMsg} isError={true} />;
 
   return (
     <ul>

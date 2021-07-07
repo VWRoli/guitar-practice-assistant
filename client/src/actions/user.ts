@@ -3,23 +3,24 @@ import { Dispatch } from 'react';
 import { UserAction } from './userTypes';
 import { ActionType } from '../constants/actionTypes';
 import { UpdateProfileFormData } from '../components/Dashboard/MainContent/UserProfile/UserProfile';
+import { errorHandler } from '../utils/helpers';
+import { ItemAction } from './itemTypes';
 
-export const getProfile = () => async (dispatch: Dispatch<UserAction>) => {
+export const getProfile = () => async (dispatch: Dispatch<ItemAction>) => {
   try {
+    dispatch({ type: ActionType.SET_ERROR, payload: '' });
     const { data } = await api.getProfile();
     dispatch({ type: ActionType.FETCH_USER, payload: data });
   } catch (error) {
-    dispatch({
-      type: ActionType.SET_USER_ERROR,
-      payload: error.response?.data.error?.message,
-    });
+    errorHandler(error, dispatch);
   }
 };
 
 export const updateProfile =
   (formData: UpdateProfileFormData) =>
-  async (dispatch: Dispatch<UserAction>) => {
+  async (dispatch: Dispatch<ItemAction>) => {
     try {
+      dispatch({ type: ActionType.SET_ERROR, payload: '' });
       const { data } = await api.updateProfile(formData);
       const localUserData = JSON.parse(
         localStorage.getItem('guitar-pa-profile') || '{}'
@@ -38,9 +39,6 @@ export const updateProfile =
       dispatch({ type: ActionType.UPDATE_USER });
       dispatch({ type: ActionType.UPDATE_USER_MSG, payload: data.message });
     } catch (error) {
-      dispatch({
-        type: ActionType.SET_USER_ERROR,
-        payload: error.response?.data.error?.message,
-      });
+      errorHandler(error, dispatch);
     }
   };

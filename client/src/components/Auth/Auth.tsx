@@ -30,7 +30,7 @@ type Props = {
 };
 
 const Auth: React.FC<Props> = ({ isSignup, setIsSignup }): JSX.Element => {
-  const isError = useSelector((state: State) => state.items.isError);
+  const errorMsg = useSelector((state: State) => state.items.errorMsg);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -102,7 +102,7 @@ const Auth: React.FC<Props> = ({ isSignup, setIsSignup }): JSX.Element => {
               handleChange={handleChange}
             />
           )}
-          {isError && <Message />}
+          {errorMsg && <Message msg={errorMsg} isError={true} />}
           <Button
             text={isSignup ? 'Create my account' : 'Log in to my account'}
             link={false}

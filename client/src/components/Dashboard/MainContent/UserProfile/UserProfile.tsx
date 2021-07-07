@@ -4,6 +4,8 @@ import { updateProfile } from '../../../../actions/user';
 import { ActionType } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
 import { State } from '../../../../reducers';
+//Components
+import Message from '../../../utils/Message/Message';
 import Button from '../../../utils/Button/Button';
 
 type Props = {
@@ -69,11 +71,7 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
             onChange={handleChange}
           />
         </div>
-        {msg && (
-          <div className="profile-update-success">
-            <p>{msg}</p>
-          </div>
-        )}
+        {msg && <Message msg={msg} isError={false} />}
         <Button text="Submit" link={false} />
       </form>
     </section>

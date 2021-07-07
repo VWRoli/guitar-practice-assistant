@@ -1,6 +1,5 @@
 import { FaExclamationTriangle } from 'react-icons/fa';
 import brokenStrings from '../../assets/not-found.png';
-import { Link } from 'react-router-dom';
 import Button from '../utils/Button/Button';
 
 const NotFound = (): JSX.Element => {

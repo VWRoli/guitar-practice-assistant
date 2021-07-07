@@ -1,15 +1,22 @@
-.error-container {
-  color: $error-clr;
+.msg-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(243, 175, 175);
   min-width: 20rem;
   padding: 0.75rem 1rem;
   margin: auto;
-  border: 2px solid $error-clr;
   border-radius: 15px;
   #close-msg {
     cursor: pointer;
   }
+}
+.error {
+  color: $error-clr;
+  border: 2px solid $error-clr;
+  background-color: rgb(243, 175, 175);
+}
+.success {
+  color: green;
+  border: 2px solid green;
+  background-color: #b9f8b6;
 }

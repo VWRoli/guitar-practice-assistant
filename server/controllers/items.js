@@ -2,31 +2,36 @@ import mongoose from 'mongoose';
 import PracticeItem from '../models/practiceItem.js';
 import createHttpError from 'http-errors';
 
-export const getItems = async (req, res) => {
+export const getItems = async (req, res, next) => {
   try {
-    const practiceItems = await PracticeItem.find({ userId: req.userId });
+    const practiceItems = await PracticeItem.find({
+      userId: req.userId,
+    });
+    if (!practiceItems.length) throw createHttpError(404, `Items not found`);
 
     res.status(200).json(practiceItems);
   } catch (error) {
-    res.status(404).json(error);
+    next(error);
   }
 };
 
-export const createItem = async (req, res) => {
+export const createItem = async (req, res, next) => {
   const newItem = new PracticeItem({
     ...req.body,
   });
+
+  if (!newItem) throw createHttpError(400, `Problem creating item`);
 
   try {
     await newItem.save();
 
     res.status(201).json(newItem);
   } catch (error) {
-    res.status(400).json(error);
+    next(error);
   }
 };
 
-export const deleteItem = async (req, res) => {
+export const deleteItem = async (req, res, next) => {
   const { id } = req.params;
   try {
     if (!mongoose.Types.ObjectId.isValid(id))
@@ -36,11 +41,11 @@ export const deleteItem = async (req, res) => {
 
     res.json({ message: 'Item deleted successfully' });
   } catch (error) {
-    res.status(400).json(error);
+    next(error);
   }
 };
 
-export const updateItem = async (req, res) => {
+export const updateItem = async (req, res, next) => {
   const { id: _id } = req.params;
   try {
     const item = req.body;
@@ -54,6 +59,6 @@ export const updateItem = async (req, res) => {
 
     res.json(updatedItem);
   } catch (error) {
-    res.status(400).json(error);
+    next(error);
   }
 };
