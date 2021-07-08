@@ -7,7 +7,6 @@ export const getItems = async (req, res, next) => {
     const practiceItems = await PracticeItem.find({
       userId: req.userId,
     });
-    if (!practiceItems.length) throw createHttpError(404, `Items not found`);
 
     res.status(200).json(practiceItems);
   } catch (error) {

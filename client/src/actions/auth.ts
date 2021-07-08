@@ -29,6 +29,8 @@ export const signup =
 
       history.push('/dashboard');
     } catch (error) {
+      console.log(error.response);
+
       dispatch({
         type: ActionType.SET_ERROR,
         payload: error.response.data.error.message,
@@ -39,7 +41,6 @@ export const signup =
 export const logout = () => async (dispatch: Dispatch<AuthAction>) => {
   try {
     dispatch({ type: ActionType.LOGOUT });
-    console.log('logout');
   } catch (error) {
     dispatch({
       type: ActionType.SET_ERROR,

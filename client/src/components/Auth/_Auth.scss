@@ -42,6 +42,7 @@
   margin: 1rem;
   padding: 2rem;
   color: $dark-text;
+  min-width: 25vw;
 }
 .form-header h2,
 .form-header h2 span {
@@ -57,15 +58,20 @@
   }
 }
 .auth__form-group {
-  padding: 1rem 0;
+  padding: 2rem 0 0 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 .auth__form-group input {
   padding: 1rem;
-  width: 350px;
+  min-width: 400px;
   border-radius: 15px;
   border: 1px solid $dark-text;
   font-size: 1.1rem;
+}
+.form-error-msg {
+  color: $error-clr;
 }
 
 .login-switch {

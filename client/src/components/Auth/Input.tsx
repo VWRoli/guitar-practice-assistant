@@ -4,6 +4,7 @@ type Props = {
   placeholder: string;
   autoFocus?: boolean;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  error?: string;
 };
 
 const Input: React.FC<Props> = ({
@@ -12,6 +13,7 @@ const Input: React.FC<Props> = ({
   placeholder,
   autoFocus,
   handleChange,
+  error,
 }): JSX.Element => {
   return (
     <div className="auth__form-group">
@@ -23,6 +25,7 @@ const Input: React.FC<Props> = ({
         autoFocus={autoFocus}
         onChange={handleChange}
       />
+      {error && <small className="form-error-msg">{error}</small>}
     </div>
   );
 };
