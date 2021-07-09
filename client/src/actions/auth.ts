@@ -29,8 +29,6 @@ export const signup =
 
       history.push('/dashboard');
     } catch (error) {
-      console.log(error.response);
-
       dispatch({
         type: ActionType.SET_ERROR,
         payload: error.response.data.error.message,

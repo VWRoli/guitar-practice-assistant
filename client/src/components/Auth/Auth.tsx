@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signin, signup } from '../../actions/auth';
@@ -25,10 +25,10 @@ const initialState: formDataType = {
   confirmPassword: '',
 };
 
-export type AuthPropType = {
+export interface AuthPropType {
   isSignup: boolean;
   setIsSignup: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 const Auth: React.FC<AuthPropType> = ({
   isSignup,
@@ -36,21 +36,27 @@ const Auth: React.FC<AuthPropType> = ({
 }): JSX.Element => {
   const errorMsg = useSelector((state: State) => state.items.errorMsg);
   const [formErrors, setFormErrors] = useState<formDataType | null>(null);
+  const [hideInitialError, setHideInitialError] = useState(true);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect(() => {
+    setFormErrors(validateForm(formData, isSignup));
+  }, [formData]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    setHideInitialError(false);
 
-    setFormErrors(validateForm(formData));
-    if (isSignup && !formErrors) {
+    if (formErrors) return;
+
+    if (isSignup) {
       dispatch(signup(formData, history));
-    } else if (!isSignup && !formErrors) {
+    } else {
       dispatch(signin(formData, history));
     }
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -80,6 +86,8 @@ const Auth: React.FC<AuthPropType> = ({
             autoFocus={true}
             handleChange={handleChange}
             error={formErrors?.username}
+            value={formData.username}
+            hideInitialError={hideInitialError}
           />
 
           {isSignup && (
@@ -89,6 +97,8 @@ const Auth: React.FC<AuthPropType> = ({
               placeholder="Email"
               handleChange={handleChange}
               error={formErrors?.email}
+              value={formData.email!}
+              hideInitialError={hideInitialError}
             />
           )}
 
@@ -98,6 +108,8 @@ const Auth: React.FC<AuthPropType> = ({
             placeholder="Password"
             handleChange={handleChange}
             error={formErrors?.password}
+            value={formData.password}
+            hideInitialError={hideInitialError}
           />
 
           {isSignup && (
@@ -107,6 +119,8 @@ const Auth: React.FC<AuthPropType> = ({
               placeholder="Confirm Password"
               handleChange={handleChange}
               error={formErrors?.confirmPassword}
+              value={formData.confirmPassword!}
+              hideInitialError={hideInitialError}
             />
           )}
           {errorMsg && <Message msg={errorMsg} isError={true} />}
@@ -118,7 +132,11 @@ const Auth: React.FC<AuthPropType> = ({
 
           <hr />
 
-          <LoginSwitch isSignup={isSignup} setIsSignup={setIsSignup} />
+          <LoginSwitch
+            isSignup={isSignup}
+            setIsSignup={setIsSignup}
+            setHideInitialError={setHideInitialError}
+          />
         </div>
       </form>
     </section>

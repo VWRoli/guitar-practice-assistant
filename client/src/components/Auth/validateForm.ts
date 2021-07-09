@@ -1,7 +1,10 @@
 import validator from 'validator';
 import { formDataType } from './Auth';
 
-export default function validateForm(formData: formDataType) {
+export default function validateForm(
+  formData: formDataType,
+  isSignup: boolean
+) {
   let errors: any = {};
 
   //username
@@ -15,11 +18,20 @@ export default function validateForm(formData: formDataType) {
   }
 
   //email
-  const email = formData.email?.trim().toLowerCase();
-  if (!email) {
-    errors.email = '*Email required';
-  } else if (!validator.isEmail(email)) {
-    errors.email = 'Email is invalid';
+  if (isSignup) {
+    const email = formData.email?.trim().toLowerCase();
+    if (!email) {
+      errors.email = '*Email required';
+    } else if (!validator.isEmail(email)) {
+      errors.email = 'Email is invalid';
+    }
+
+    //confirm password
+    if (!formData.confirmPassword) {
+      errors.confirmPassword = '*Confirm password is required';
+    } else if (formData.password !== formData.confirmPassword) {
+      errors.confirmPassword = 'Passwords do not match';
+    }
   }
 
   //password
@@ -28,14 +40,6 @@ export default function validateForm(formData: formDataType) {
   } else if (!validator.isStrongPassword(formData.password)) {
     errors.password = 'The password you provided is not strong enough!';
   }
-
-  if (!formData.confirmPassword) {
-    //confirm password
-    errors.confirmPassword = '*Password is required';
-  } else if (formData.password !== formData.confirmPassword) {
-    errors.confirmPassword = 'Passwords do not match';
-  }
-
   //No errors
   if (!Object.keys(errors).length) return null;
 
