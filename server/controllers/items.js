@@ -6,8 +6,7 @@ export const getItems = async (req, res, next) => {
   try {
     const practiceItems = await PracticeItem.find({
       userId: req.userId,
-    });
-
+    }).sort({ _id: -1 });
     res.status(200).json(practiceItems);
   } catch (error) {
     next(error);
