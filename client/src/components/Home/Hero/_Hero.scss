@@ -6,6 +6,9 @@
   margin-top: 80px;
 }
 .landing__hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 1;
   color: $light2-clr;
   h1 {
