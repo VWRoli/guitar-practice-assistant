@@ -60,6 +60,10 @@ export const updateProfile = async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(_id))
       throw createHttpError(404, 'No user with that ID.');
 
+    const existingUser = await User.findOne({ email: user.email });
+
+    if (existingUser) throw createHttpError(400, 'User already exists.');
+
     await User.findByIdAndUpdate({ _id }, user, {
       new: true,
     });
