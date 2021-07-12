@@ -13,6 +13,7 @@ export type ItemType = {
   type: string;
   userId: string;
   isDisabled: boolean;
+  createdAt: Date;
 };
 
 const Sidebar = () => {
@@ -25,6 +26,7 @@ const Sidebar = () => {
     type: 'excercise',
     userId: user?.user._id,
     isDisabled: false,
+    createdAt: new Date(),
   });
 
   const clear = (): void => {
