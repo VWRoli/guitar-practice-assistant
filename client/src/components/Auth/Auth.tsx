@@ -5,7 +5,7 @@ import { signin, signup } from '../../actions/auth';
 import { Link } from 'react-router-dom';
 //Components
 import Input from './Input';
-import Message from '../utils/Message/Message';
+import Message, { msgType } from '../utils/Message/Message';
 import { State } from '../../reducers';
 import Button from '../utils/Button/Button';
 import validateForm from './validateForm';
@@ -123,7 +123,7 @@ const Auth: React.FC<AuthPropType> = ({
               hideInitialError={hideInitialError}
             />
           )}
-          {errorMsg && <Message msg={errorMsg} isError={true} />}
+          {errorMsg && <Message msg={errorMsg} msgRole={msgType.ERROR} />}
 
           <Button
             text={isSignup ? 'Create my account' : 'Log in to my account'}

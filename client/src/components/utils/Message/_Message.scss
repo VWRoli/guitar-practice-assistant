@@ -11,13 +11,18 @@
     cursor: pointer;
   }
 }
-.error {
+.ERROR {
   color: $error-clr;
   border: 2px solid $error-clr;
   background-color: rgb(243, 175, 175);
 }
-.success {
+.SUCCESS {
   color: green;
   border: 2px solid green;
   background-color: #b9f8b6;
+}
+.PRIMARY {
+  color: #1a4298;
+  border: 2px solid #1a4298;
+  background-color: #b3caee;
 }

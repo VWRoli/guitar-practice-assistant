@@ -3,7 +3,7 @@ import { State } from '../../../../reducers';
 //Components
 import Item from './Item/Item';
 import Loading from '../../../utils/Loading/Loading';
-import Message from '../../../utils/Message/Message';
+import Message, { msgType } from '../../../utils/Message/Message';
 import { ItemType } from '../Sidebar';
 
 type Props = {
@@ -18,7 +18,7 @@ const Items: React.FC<Props> = ({ clear }) => {
   if (isLoading) return <Loading />;
 
   //Error screen
-  if (errorMsg) return <Message msg={errorMsg} isError={true} />;
+  if (errorMsg) return <Message msg={errorMsg} msgRole={msgType.ERROR} />;
 
   const getTime = (date?: Date) => {
     return date != null ? new Date(date).getTime() : 0;
@@ -38,9 +38,13 @@ const Items: React.FC<Props> = ({ clear }) => {
           <Item key={item._id} item={item} clear={clear} />
         ))
       ) : (
-        <p className="empty-items-text">
-          You don't have any practice items yet.
-        </p>
+        // <p className="empty-items-text">
+        //   You don't have any practice items yet.
+        // </p>
+        <Message
+          msg="You don't have any practice items yet."
+          msgRole={msgType.PRIMARY}
+        />
       )}
     </ul>
   );

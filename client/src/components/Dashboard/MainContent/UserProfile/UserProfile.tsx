@@ -5,7 +5,7 @@ import { ActionType } from '../../../../constants/actionTypes';
 import { FaTimes } from 'react-icons/fa';
 import { State } from '../../../../reducers';
 //Components
-import Message from '../../../utils/Message/Message';
+import Message, { msgType } from '../../../utils/Message/Message';
 import Button from '../../../utils/Button/Button';
 
 type Props = {
@@ -71,7 +71,7 @@ const UserProfile: React.FC<Props> = ({ setEditProfile }): JSX.Element => {
             onChange={handleChange}
           />
         </div>
-        {msg && <Message msg={msg} isError={false} />}
+        {msg && <Message msg={msg} msgRole={msgType.SUCCESS} />}
         <Button text="Submit" link={false} />
       </form>
     </section>

@@ -2,18 +2,24 @@ import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { removeError } from '../../../actions/items';
 
+export enum msgType {
+  PRIMARY = 'PRIMARY',
+  ERROR = 'ERROR',
+  SUCCESS = 'SUCCESS',
+}
+
 type Props = {
   msg: string;
-  isError: boolean;
+  msgRole: msgType;
 };
 
-const Error: React.FC<Props> = ({ msg, isError }): JSX.Element => {
+const Error: React.FC<Props> = ({ msg, msgRole }): JSX.Element => {
   const dispatch = useDispatch();
 
   return (
-    <div className={isError ? 'msg-container error' : 'msg-container success'}>
+    <div className={`msg-container ${msgRole}`}>
       <p>{msg}</p>
-      {isError && (
+      {msgRole === msgType.ERROR && (
         <FaTimes id="close-msg" onClick={() => dispatch(removeError())} />
       )}
     </div>
