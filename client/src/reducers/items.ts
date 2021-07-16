@@ -1,6 +1,6 @@
 import { ActionType } from '../constants/actionTypes';
 import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
-import { ItemAction } from '../actions/itemTypes';
+import { Action } from '../actions/Types';
 
 type ItemsState = {
   isLoading: boolean;
@@ -16,7 +16,7 @@ const defaultState: ItemsState = {
   currentId: undefined,
 };
 
-const itemsReducer = (state = defaultState, action: ItemAction) => {
+const itemsReducer = (state = defaultState, action: Action) => {
   switch (action.type) {
     case ActionType.FETCH_ITEMS:
       return { ...state, items: action.payload, isLoading: false };

@@ -1,4 +1,4 @@
-import { UserAction } from '../actions/userTypes';
+import { Action } from '../actions/Types';
 import { ActionType } from '../constants/actionTypes';
 
 type UserState = {
@@ -13,7 +13,7 @@ const defaultState: UserState = {
   message: '',
 };
 
-const userReducer = (state = defaultState, action: UserAction) => {
+const userReducer = (state = defaultState, action: Action) => {
   switch (action.type) {
     case ActionType.FETCH_USER:
       return { ...state, user: action.payload, isUserError: false };

@@ -5,10 +5,10 @@ import { State } from './reducers';
 //Components
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
+import NotFound from './components/NotFound/NotFound';
 
 //CSS
 import './css/main.min.css';
-import NotFound from './components/NotFound/NotFound';
 
 const Auth = lazy(() => import('./components/Auth/Auth'));
 

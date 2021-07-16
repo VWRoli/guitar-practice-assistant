@@ -1,8 +1,6 @@
 import { ActionType } from '../constants/actionTypes';
 import { Dispatch } from 'react';
-import { ItemAction } from '../actions/itemTypes';
-import { UserAction } from '../actions/userTypes';
-import { AuthAction } from '../actions/authTypes';
+import { Action } from '../actions/Types';
 
 export const formatTime = (duration: number): string => {
   const min = String(Math.trunc(duration / 60)).padStart(2, '0');
@@ -10,7 +8,7 @@ export const formatTime = (duration: number): string => {
   return `${min}:${sec}`;
 };
 
-export const errorHandler = (error: any, dispatch: Dispatch<ItemAction>) => {
+export const errorHandler = (error: any, dispatch: Dispatch<Action>) => {
   if (error.response) {
     console.log('Problem with response', error.response);
     dispatch({

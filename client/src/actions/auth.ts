@@ -1,12 +1,12 @@
 import * as api from '../api';
 import { Dispatch } from 'redux';
 import { ActionType } from '../constants/actionTypes';
-import { AuthAction } from './authTypes';
+import { Action } from './Types';
 import { formDataType } from '../components/Auth/Auth';
 
 export const signin =
   (formData: formDataType, history: any) =>
-  async (dispatch: Dispatch<AuthAction>) => {
+  async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await api.signIn(formData);
 
@@ -21,7 +21,7 @@ export const signin =
   };
 export const signup =
   (formData: formDataType, history: any) =>
-  async (dispatch: Dispatch<AuthAction>) => {
+  async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await api.signUp(formData);
 
@@ -36,7 +36,7 @@ export const signup =
     }
   };
 
-export const logout = () => async (dispatch: Dispatch<AuthAction>) => {
+export const logout = () => async (dispatch: Dispatch<Action>) => {
   try {
     dispatch({ type: ActionType.LOGOUT });
   } catch (error) {

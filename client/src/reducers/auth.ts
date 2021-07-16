@@ -1,4 +1,4 @@
-import { AuthAction } from '../actions/authTypes';
+import { Action } from '../actions/Types';
 import { ActionType } from '../constants/actionTypes';
 
 export interface AuthDataType {
@@ -21,7 +21,7 @@ const defaultState: AuthState = {
   authData: localValue !== null ? JSON.parse(localValue) : null,
 };
 
-const authReducer = (state = defaultState, action: AuthAction) => {
+const authReducer = (state = defaultState, action: Action) => {
   switch (action.type) {
     case ActionType.AUTH:
       localStorage.setItem(

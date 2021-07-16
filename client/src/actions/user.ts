@@ -1,12 +1,11 @@
 import * as api from '../api';
 import { Dispatch } from 'react';
-import { UserAction } from './userTypes';
 import { ActionType } from '../constants/actionTypes';
 import { UpdateProfileFormData } from '../components/Dashboard/MainContent/UserProfile/UserProfile';
 import { errorHandler } from '../utils/helpers';
-import { ItemAction } from './itemTypes';
+import { Action } from './Types';
 
-export const getProfile = () => async (dispatch: Dispatch<ItemAction>) => {
+export const getProfile = () => async (dispatch: Dispatch<Action>) => {
   try {
     dispatch({ type: ActionType.SET_ERROR, payload: '' });
     const { data } = await api.getProfile();
@@ -17,8 +16,7 @@ export const getProfile = () => async (dispatch: Dispatch<ItemAction>) => {
 };
 
 export const updateProfile =
-  (formData: UpdateProfileFormData) =>
-  async (dispatch: Dispatch<ItemAction>) => {
+  (formData: UpdateProfileFormData) => async (dispatch: Dispatch<Action>) => {
     try {
       dispatch({ type: ActionType.SET_ERROR, payload: '' });
       const { data } = await api.updateProfile(formData);

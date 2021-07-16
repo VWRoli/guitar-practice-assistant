@@ -3,9 +3,9 @@ import * as api from '../api';
 import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
 import { ActionType } from '../constants/actionTypes';
 import { errorHandler } from '../utils/helpers';
-import { ItemAction } from './itemTypes';
+import { Action } from './Types';
 
-export const getItems = () => async (dispatch: Dispatch<ItemAction>) => {
+export const getItems = () => async (dispatch: Dispatch<Action>) => {
   try {
     dispatch({ type: ActionType.SET_ERROR, payload: '' });
     dispatch({ type: ActionType.SET_LOADING });
@@ -19,7 +19,7 @@ export const getItems = () => async (dispatch: Dispatch<ItemAction>) => {
 };
 
 export const createItem =
-  (item: ItemType) => async (dispatch: Dispatch<ItemAction>) => {
+  (item: ItemType) => async (dispatch: Dispatch<Action>) => {
     try {
       dispatch({ type: ActionType.SET_ERROR, payload: '' });
       const { data } = await api.createItem(item);
@@ -32,7 +32,7 @@ export const createItem =
 
 export const updateItem =
   (id: string | undefined, item: ItemType) =>
-  async (dispatch: Dispatch<ItemAction>) => {
+  async (dispatch: Dispatch<Action>) => {
     try {
       dispatch({ type: ActionType.SET_ERROR, payload: '' });
       const { data } = await api.updateItem(id, item);
@@ -44,7 +44,7 @@ export const updateItem =
   };
 
 export const deleteItem =
-  (id: string | undefined) => async (dispatch: Dispatch<ItemAction>) => {
+  (id: string | undefined) => async (dispatch: Dispatch<Action>) => {
     try {
       dispatch({ type: ActionType.SET_ERROR, payload: '' });
       await api.deleteItem(id);
@@ -57,7 +57,7 @@ export const deleteItem =
   };
 
 export const setCurrentId =
-  (id: string | undefined) => async (dispatch: Dispatch<ItemAction>) => {
+  (id: string | undefined) => async (dispatch: Dispatch<Action>) => {
     try {
       dispatch({ type: ActionType.SET_ERROR, payload: '' });
       dispatch({ type: ActionType.SET_CURRENT_ID, payload: id });
@@ -67,7 +67,7 @@ export const setCurrentId =
     }
   };
 
-export const removeError = () => async (dispatch: Dispatch<ItemAction>) => {
+export const removeError = () => async (dispatch: Dispatch<Action>) => {
   try {
     dispatch({ type: ActionType.SET_ERROR, payload: '' });
   } catch (error) {

@@ -57,7 +57,20 @@ interface UpdateUserErrorMsgAction {
   payload: string;
 }
 
-export type ItemAction =
+interface AuthenticateAction {
+  type: ActionType.AUTH;
+  payload: AuthDataType;
+}
+interface SetAuthErrorAction {
+  type: ActionType.SET_ERROR;
+  payload: string;
+}
+
+interface LogoutAction {
+  type: ActionType.LOGOUT;
+}
+
+export type Action =
   | FetchItemsAction
   | CreateItemAction
   | UpdateItemAction
@@ -69,4 +82,7 @@ export type ItemAction =
   | FetchUserAction
   | SetUserErrorAction
   | UpdateUserAction
-  | UpdateUserErrorMsgAction;
+  | UpdateUserErrorMsgAction
+  | AuthenticateAction
+  | SetAuthErrorAction
+  | LogoutAction;
