@@ -1,16 +1,15 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { useState, Suspense, lazy } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { State } from './reducers';
 //Components
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
+import Auth from './components/Auth/Auth';
 import NotFound from './components/NotFound/NotFound';
 
 //CSS
 import './css/main.min.css';
-
-const Auth = lazy(() => import('./components/Auth/Auth'));
 
 function App() {
   const user = useSelector((state: State) => state.auth.authData);
@@ -27,11 +26,9 @@ function App() {
               <Home setIsSignup={setIsSignup} />
             )}
           </Route>
-          <Suspense fallback={<div />}>
-            <Route path="/auth" exact>
-              <Auth isSignup={isSignup} setIsSignup={setIsSignup} />
-            </Route>
-          </Suspense>
+          <Route path="/auth" exact>
+            <Auth isSignup={isSignup} setIsSignup={setIsSignup} />
+          </Route>
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="*">
             <NotFound />
