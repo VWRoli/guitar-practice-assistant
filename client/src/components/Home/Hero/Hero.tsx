@@ -18,7 +18,7 @@ const Hero = (): JSX.Element => {
         <Button text="Create a new account" link={true} route="/auth" />
       </div>
       <div className="landing__hero-img-wrapper">
-        <img src={heroGuitar} alt="The App" />
+        <img src={heroGuitar} alt="Guitar" width="512" height="383" />
       </div>
     </section>
   );
