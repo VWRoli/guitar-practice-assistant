@@ -21,7 +21,7 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
 
   useEffect(() => {
     if (item) setItemData(item);
-  }, [item]);
+  }, [item, setItemData]);
 
   const dispatch = useDispatch();
 

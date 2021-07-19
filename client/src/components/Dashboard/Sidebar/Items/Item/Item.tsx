@@ -4,8 +4,6 @@ import {
   FaRegClock,
   FaMusic,
   FaTimes,
-  FaRegPlayCircle,
-  FaRegPauseCircle,
   FaRedoAlt,
   FaEdit,
 } from 'react-icons/fa';
@@ -13,6 +11,7 @@ import { deleteItem, setCurrentId } from '../../../../../actions/items';
 import useTimer from '../../../../../hooks/useTimer';
 import { formatTime } from '../../../../../utils/helpers';
 import { ItemType } from '../../Sidebar';
+import StartStopButton from './StartStopButton';
 
 type Props = {
   clear: () => void;
@@ -83,17 +82,11 @@ const Item: React.FC<Props> = ({ item, clear }) => {
         </div>
 
         {!timerActive && !isPaused ? (
-          <button className="play-btn" onClick={handleStart}>
-            <FaRegPlayCircle />
-          </button>
+          <StartStopButton isPlay={true} clickHandler={handleStart} />
         ) : isPaused ? (
-          <button className="play-btn" onClick={handlePause}>
-            <FaRegPauseCircle />
-          </button>
+          <StartStopButton isPlay={false} clickHandler={handlePause} />
         ) : (
-          <button className="play-btn" onClick={handleResume}>
-            <FaRegPlayCircle />
-          </button>
+          <StartStopButton isPlay={true} clickHandler={handleResume} />
         )}
       </div>
     </li>

@@ -43,7 +43,7 @@ const Auth: React.FC<AuthPropType> = ({
 
   useEffect(() => {
     setFormErrors(validateForm(formData, isSignup));
-  }, [formData]);
+  }, [formData, isSignup]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();

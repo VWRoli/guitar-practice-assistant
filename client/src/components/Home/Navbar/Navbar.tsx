@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
 import { links } from './navbarData';
 import { FaBars } from 'react-icons/fa';
+//Components
+import AccountButton from './AccountButton';
 
 type Props = {
   setIsSignup: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,16 +53,16 @@ const Navbar: React.FC<Props> = ({ setIsSignup }): JSX.Element => {
         </ul>
 
         <ul className="landing__nav-account">
-          <li className="nav-link">
-            <Link to="/auth" onClick={() => setIsSignup(false)}>
-              Login
-            </Link>
-          </li>
-          <li className="nav-link">
-            <Link to="/auth" className="accent-clr">
-              Create an account
-            </Link>
-          </li>
+          <AccountButton
+            text="Login"
+            setIsSignup={setIsSignup}
+            boolean={false}
+          />
+          <AccountButton
+            text="Create an account"
+            setIsSignup={setIsSignup}
+            boolean={true}
+          />
         </ul>
       </div>
     </nav>
