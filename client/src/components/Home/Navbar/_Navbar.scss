@@ -186,20 +186,6 @@
     margin-right: 0;
   }
 }
-@media screen and (max-width: 789px) {
-  #landing__hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem !important;
-  }
-  .landing__hero-text {
-    text-align: center;
-  }
-  .primary-btn {
-    margin: auto;
-  }
-}
 
 @media screen and (max-width: 500px) {
   .landing__card-container,

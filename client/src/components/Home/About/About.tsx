@@ -7,12 +7,7 @@ const About = (): JSX.Element => {
       <div>
         <h2>About Guitar Practice Assistant</h2>
         <div className="landing__about-img-wrapper">
-          <img
-            src={guitarPlayer}
-            alt="Guitar player"
-            width="410"
-            height="531"
-          />
+          <img src={guitarPlayer} alt="Guitar player" />
         </div>
         <p className="landing__about-text">
           Guitar PA is FREE and easy to use app to help you become the best

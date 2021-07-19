@@ -1,9 +1,15 @@
 #landing__hero {
   background-color: $dark2-clr;
-  display: flex;
-  justify-content: space-around;
   padding: 1rem 5rem;
   margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+.landing__hero-wrapper {
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .landing__hero-text {
   display: flex;
@@ -28,13 +34,29 @@
   position: relative;
   max-width: 680px;
   margin: 1.5rem;
+  background-color: $dark2-clr;
   img {
     border-radius: 25px;
-    height: 100%;
   }
   &::after {
     content: '';
     @include image-overlay();
+  }
+}
+@media screen and (max-width: 1089px) {
+  #landing__hero {
+    padding: 1rem !important;
+  }
+  .landing__hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .landing__hero-text {
+    text-align: center;
+  }
+  .primary-btn {
+    margin: auto;
   }
 }
 @media screen and (max-width: 600px) {

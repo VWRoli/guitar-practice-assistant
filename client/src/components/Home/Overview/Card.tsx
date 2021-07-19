@@ -23,7 +23,7 @@ const Card: React.FC<Props> = ({
         <p>{text}</p>
       </div>
       <div className="card-img-wrapper">
-        <img src={image} alt={title} width="498" height="222" />
+        <img src={image} alt={title} />
       </div>
     </article>
   );
