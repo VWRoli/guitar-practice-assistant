@@ -10,7 +10,7 @@ type ItemsState = {
 };
 
 const defaultState: ItemsState = {
-  isLoading: false,
+  isLoading: true,
   errorMsg: '',
   items: [],
   currentId: undefined,

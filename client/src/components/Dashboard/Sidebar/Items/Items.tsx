@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { State } from '../../../../reducers';
+import { ItemType } from '../Sidebar';
 //Components
 import Item from './Item/Item';
 import Loading from '../../../utils/Loading/Loading';
 import Message, { msgType } from '../../../utils/Message/Message';
-import { ItemType } from '../Sidebar';
 
 type Props = {
   clear: () => void;
@@ -38,11 +38,8 @@ const Items: React.FC<Props> = ({ clear }) => {
           <Item key={item._id} item={item} clear={clear} />
         ))
       ) : (
-        // <p className="empty-items-text">
-        //   You don't have any practice items yet.
-        // </p>
         <Message
-          msg="You don't have any practice items yet."
+          msg="You don't have any items yet."
           msgRole={msgType.PRIMARY}
         />
       )}
