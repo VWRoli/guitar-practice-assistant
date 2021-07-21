@@ -54,6 +54,9 @@
 .form-body {
   display: flex;
   flex-direction: column;
+  button {
+    margin-top: 1rem;
+  }
   hr {
     margin-top: 1rem;
   }
@@ -107,7 +110,7 @@
     margin: 0;
   }
   .auth__form-group input {
-    width: 80vw;
+    min-width: 80vw;
   }
   .signup-btn {
     padding: 1.5rem;

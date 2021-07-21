@@ -21,3 +21,14 @@ aside::-webkit-scrollbar {
     flex: 6;
   }
 }
+@media screen and (max-width: 750px) {
+  aside {
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 350px) {
+  aside {
+    padding: 2rem 5px;
+  }
+}

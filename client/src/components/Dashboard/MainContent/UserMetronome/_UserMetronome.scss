@@ -1,8 +1,17 @@
+.metronome__bpm {
+  h1 {
+    margin-top: 0 !important;
+  }
+}
+.metronome-slider {
+  display: none;
+}
 .metronome-container {
   flex: 8;
   display: grid;
   place-content: center;
 }
+
 @media screen and (max-width: 1250px) {
   .metronome-container {
     flex: 7;
@@ -14,5 +23,38 @@
     .metronome {
       margin: 1rem;
     }
+  }
+}
+@media screen and (max-width: 750px) {
+  .metronome-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 25vh;
+    background-color: $light-clr;
+    z-index: 10;
+  }
+  .metronome__top {
+    justify-content: center !important;
+  }
+  .metronome__play-pause {
+    @include fix-size(4rem);
+    svg {
+      @include fix-size(4rem);
+    }
+  }
+  .metronome-slider {
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    margin: auto;
+    svg {
+      font-size: 1.5rem;
+    }
+  }
+  .hide-slider {
+    bottom: -20vh;
   }
 }

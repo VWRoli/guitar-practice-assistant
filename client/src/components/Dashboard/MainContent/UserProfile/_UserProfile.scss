@@ -37,3 +37,14 @@
     color: $error-clr;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .user-profile {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: $light-clr;
+    height: 100vh;
+  }
+}

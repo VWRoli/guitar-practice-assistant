@@ -34,3 +34,8 @@
     transform: scale(1.1);
   }
 }
+
+@mixin fix-size($size) {
+  width: $size !important;
+  height: $size !important;
+}

@@ -86,3 +86,11 @@ button {
     width: 90vw;
   }
 }
+@media screen and (max-width: 750px) {
+  .container {
+    width: 100vw;
+    margin: 0;
+    height: 100vh;
+    display: block;
+  }
+}
