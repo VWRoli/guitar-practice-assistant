@@ -9,6 +9,7 @@ export enum ActionType {
   UNSET_ERROR = 'UNSET_ERROR',
 
   AUTH = 'AUTH',
+  SET_AUTH_LOADING = 'SET_AUTH_LOADING',
   LOGOUT = 'LOGOUT',
 
   SET_USER_ERROR = 'SET_USER_ERROR',

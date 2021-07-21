@@ -8,10 +8,13 @@ export const signin =
   (formData: formDataType, history: any) =>
   async (dispatch: Dispatch<Action>) => {
     try {
+      dispatch({ type: ActionType.SET_AUTH_LOADING, payload: true });
+
       const { data } = await api.signIn(formData);
 
       dispatch({ type: ActionType.AUTH, payload: data });
       history.push('/dashboard');
+      dispatch({ type: ActionType.SET_AUTH_LOADING, payload: false });
     } catch (error) {
       dispatch({
         type: ActionType.SET_ERROR,

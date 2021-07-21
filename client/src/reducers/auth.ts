@@ -13,12 +13,14 @@ export interface AuthDataType {
 
 type AuthState = {
   authData: AuthDataType | null;
+  isLoading: boolean;
 };
 
 const localValue = localStorage.getItem('guitar-pa-profile');
 
 const defaultState: AuthState = {
   authData: localValue !== null ? JSON.parse(localValue) : null,
+  isLoading: false,
 };
 
 const authReducer = (state = defaultState, action: Action) => {

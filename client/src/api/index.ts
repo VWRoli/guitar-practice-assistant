@@ -5,7 +5,7 @@ import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-const API = axios.create({ baseURL: 'https://guitar-pa-api.herokuapp.com' });
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('guitar-pa-profile')) {

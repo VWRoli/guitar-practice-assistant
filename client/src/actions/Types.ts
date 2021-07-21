@@ -65,6 +65,9 @@ interface SetAuthErrorAction {
   type: ActionType.SET_ERROR;
   payload: string;
 }
+interface SetAuthLoadingAction {
+  type: ActionType.SET_AUTH_LOADING;
+}
 
 interface LogoutAction {
   type: ActionType.LOGOUT;
@@ -85,4 +88,5 @@ export type Action =
   | UpdateUserErrorMsgAction
   | AuthenticateAction
   | SetAuthErrorAction
+  | SetAuthLoadingAction
   | LogoutAction;

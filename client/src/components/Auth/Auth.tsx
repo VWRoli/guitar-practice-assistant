@@ -10,6 +10,7 @@ import { State } from '../../reducers';
 import Button from '../utils/Button/Button';
 import validateForm from './validateForm';
 import LoginSwitch from './LoginSwitch';
+import Loading from '../utils/Loading/Loading';
 
 export type formDataType = {
   username: string;
@@ -34,6 +35,7 @@ const Auth: React.FC<AuthPropType> = ({
   isSignup,
   setIsSignup,
 }): JSX.Element => {
+  const isLoading = useSelector((state: State) => state.auth.isLoading);
   const errorMsg = useSelector((state: State) => state.items.errorMsg);
   const [formErrors, setFormErrors] = useState<formDataType | null>(null);
   const [hideInitialError, setHideInitialError] = useState(true);
@@ -78,66 +80,70 @@ const Auth: React.FC<AuthPropType> = ({
             <span className="accent-clr">Guitar</span> PA
           </h2>
         </header>
-        <div className="form-body">
-          <Input
-            name="username"
-            type="text"
-            placeholder="Username"
-            autoFocus={true}
-            handleChange={handleChange}
-            error={formErrors?.username}
-            value={formData.username}
-            hideInitialError={hideInitialError}
-          />
-
-          {isSignup && (
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="form-body">
             <Input
-              name="email"
-              type="email"
-              placeholder="Email"
+              name="username"
+              type="text"
+              placeholder="Username"
+              autoFocus={true}
               handleChange={handleChange}
-              error={formErrors?.email}
-              value={formData.email!}
+              error={formErrors?.username}
+              value={formData.username}
               hideInitialError={hideInitialError}
             />
-          )}
 
-          <Input
-            name="password"
-            type="password"
-            placeholder="Password"
-            handleChange={handleChange}
-            error={formErrors?.password}
-            value={formData.password}
-            hideInitialError={hideInitialError}
-          />
+            {isSignup && (
+              <Input
+                name="email"
+                type="email"
+                placeholder="Email"
+                handleChange={handleChange}
+                error={formErrors?.email}
+                value={formData.email!}
+                hideInitialError={hideInitialError}
+              />
+            )}
 
-          {isSignup && (
             <Input
-              name="confirmPassword"
+              name="password"
               type="password"
-              placeholder="Confirm Password"
+              placeholder="Password"
               handleChange={handleChange}
-              error={formErrors?.confirmPassword}
-              value={formData.confirmPassword!}
+              error={formErrors?.password}
+              value={formData.password}
               hideInitialError={hideInitialError}
             />
-          )}
-          {errorMsg && <Message msg={errorMsg} msgRole={msgType.ERROR} />}
 
-          <Button
-            text={isSignup ? 'Create my account' : 'Log in to my account'}
-            link={false}
-          />
+            {isSignup && (
+              <Input
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                handleChange={handleChange}
+                error={formErrors?.confirmPassword}
+                value={formData.confirmPassword!}
+                hideInitialError={hideInitialError}
+              />
+            )}
+            {errorMsg && <Message msg={errorMsg} msgRole={msgType.ERROR} />}
 
-          <hr />
+            <Button
+              text={isSignup ? 'Create my account' : 'Log in to my account'}
+              link={false}
+            />
 
-          <LoginSwitch
-            isSignup={isSignup}
-            setIsSignup={setIsSignup}
-            setHideInitialError={setHideInitialError}
-          />
-        </div>
+            <hr />
+
+            <LoginSwitch
+              isSignup={isSignup}
+              setIsSignup={setIsSignup}
+              setHideInitialError={setHideInitialError}
+            />
+          </div>
+        )}
       </form>
     </section>
   );

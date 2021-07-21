@@ -14,9 +14,6 @@ const Items: React.FC<Props> = ({ clear }) => {
   const errorMsg = useSelector((state: State) => state.items.errorMsg);
   const items = useSelector((state: State) => state.items.items);
 
-  //Loading screen
-  if (isLoading) return <Loading />;
-
   //Error screen
   if (errorMsg) return <Message msg={errorMsg} msgRole={msgType.ERROR} />;
 
@@ -31,18 +28,20 @@ const Items: React.FC<Props> = ({ clear }) => {
   };
   const sortedItems = sortByCreatedAt(items);
 
+  //Loading screen
+  if (isLoading) return <Loading />;
+
+  //Empty items
+  if (!sortedItems.length && !isLoading)
+    return (
+      <Message msg="You don't have any items yet." msgRole={msgType.PRIMARY} />
+    );
+
   return (
     <ul>
-      {sortedItems.length ? (
-        sortedItems.map((item) => (
-          <Item key={item._id} item={item} clear={clear} />
-        ))
-      ) : (
-        <Message
-          msg="You don't have any items yet."
-          msgRole={msgType.PRIMARY}
-        />
-      )}
+      {sortedItems.map((item) => (
+        <Item key={item._id} item={item} clear={clear} />
+      ))}
     </ul>
   );
 };
