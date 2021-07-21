@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signin, signup } from '../../actions/auth';
 import { Link } from 'react-router-dom';
+import { State } from '../../reducers';
+import validateForm from './validateForm';
 //Components
 import Input from './Input';
 import Message, { msgType } from '../utils/Message/Message';
-import { State } from '../../reducers';
 import Button from '../utils/Button/Button';
-import validateForm from './validateForm';
 import LoginSwitch from './LoginSwitch';
 import Loading from '../utils/Loading/Loading';
+import Logo from '../utils/Logo/Logo';
 
 export type formDataType = {
   username: string;
@@ -68,17 +69,16 @@ const Auth: React.FC<AuthPropType> = ({
       <div className="auth__bg-overlay"></div>
       <header className="auth__main-header">
         <Link to="/">
-          <h1 className="logo">
-            <span className="accent-clr">Guitar</span> PA
-          </h1>
+          <Logo accentText="Guitar" postText="PA" />
         </Link>
       </header>
       <form className="auth__form" onSubmit={handleSubmit}>
-        <header className="form-header">
-          <h2>
-            {isSignup ? 'Sign up for ' : 'Log in to '}
-            <span className="accent-clr">Guitar</span> PA
-          </h2>
+        <header>
+          <Logo
+            preText={isSignup ? 'Sign up for ' : 'Log in to '}
+            accentText="Guitar"
+            postText="PA"
+          />
         </header>
         {isLoading ? (
           <Loading />

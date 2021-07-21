@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaGuitar } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { setCurrentId } from '../../../actions/items';
+import Logo from '../../utils/Logo/Logo';
 //Components
 import AddNewItem from './AddNewItem/AddNewItem';
 import Items from './Items/Items';
@@ -41,13 +42,7 @@ const Sidebar = () => {
   };
   return (
     <aside>
-      <h1 className="logo">
-        <span className="accent-clr">
-          <FaGuitar />
-        </span>
-        Practice Assistant
-      </h1>
-
+      <Logo accentText={<FaGuitar />} postText="Practice Assistant" />
       <AddNewItem clear={clear} setItemData={setItemData} itemData={itemData} />
       <Items clear={clear} />
     </aside>

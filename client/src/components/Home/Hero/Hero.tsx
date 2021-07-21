@@ -1,14 +1,14 @@
 import Button from '../../utils/Button/Button';
 import heroGuitar from '../../../assets/hero.jpg';
+import Logo from '../../utils/Logo/Logo';
 
 const Hero = (): JSX.Element => {
   return (
     <section id="landing__hero">
       <div className="landing__hero-wrapper">
         <div className="landing__hero-text">
-          <h1>
-            <span className="accent-clr">Guitar</span> Practice Assistant
-          </h1>
+          <Logo accentText="Guitar" postText="Practice Assistant" />
+
           <p>
             Completely FREE guitar practice assistant for every guitarist.{' '}
             <br />

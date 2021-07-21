@@ -4,6 +4,7 @@ import { links } from './navbarData';
 import { FaBars } from 'react-icons/fa';
 //Components
 import AccountButton from './AccountButton';
+import Logo from '../../utils/Logo/Logo';
 
 type Props = {
   setIsSignup: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,9 +25,7 @@ const Navbar: React.FC<Props> = ({ setIsSignup }): JSX.Element => {
           smooth={true}
           offset={-80}
           duration={500}>
-          <h1 className="logo">
-            <span className="accent-clr">Guitar</span>PA
-          </h1>
+          <Logo accentText="Guitar" postText="PA" />
         </LinkScroll>
         <FaBars id="burger-icon" onClick={handleToggle} />
       </div>
