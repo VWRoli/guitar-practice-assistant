@@ -27,6 +27,9 @@
     line-height: 2rem;
     margin: 1.5rem 0;
   }
+  a {
+    width: fit-content;
+  }
 }
 
 .landing__hero-img-wrapper {
@@ -39,7 +42,7 @@
     border-radius: 25px;
   }
   &::after {
-    content: '';
+    content: "";
     @include image-overlay();
   }
 }
