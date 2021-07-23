@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
-import { createItem, updateItem } from '../../../../actions/items';
-import { State } from '../../../../reducers';
-import { ItemType } from '../Sidebar';
+import { useState, useEffect } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { createItem, updateItem } from "../../../../actions/items";
+import { State } from "../../../../reducers";
+import { ItemType } from "../Sidebar";
 
 type Props = {
   clear: () => void;
@@ -21,6 +21,7 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
 
   useEffect(() => {
     if (item) setItemData(item);
+    console.log(item);
   }, [item, setItemData]);
 
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
   };
   return (
     <form className="new-practice-item" onSubmit={handleSubmit}>
-      <div className={visible ? 'form-group' : 'form-group hidden'}>
+      <div className={visible ? "form-group" : "form-group hidden"}>
         <div className="title-group">
           <label htmlFor="title">Title</label>
           <input
@@ -85,7 +86,7 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
         </div>
 
         <button type="submit" id="add-new-item-btn">
-          {currentId ? 'Edit' : 'Add'}
+          {currentId ? "Edit" : "Add"}
         </button>
       </div>
 

@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
-import { State } from '../../../../reducers';
-import { ItemType } from '../Sidebar';
+import { useSelector } from "react-redux";
+import { State } from "../../../../reducers";
+import { ItemType } from "../Sidebar";
 //Components
-import Item from './Item/Item';
-import Loading from '../../../utils/Loading/Loading';
-import Message, { msgType } from '../../../utils/Message/Message';
+import Item from "./Item/Item";
+import Loading from "../../../utils/Loading/Loading";
+import Message, { msgType } from "../../../utils/Message/Message";
 
 type Props = {
   clear: () => void;
