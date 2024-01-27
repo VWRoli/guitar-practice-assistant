@@ -1,11 +1,11 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import createHttpError from 'http-errors';
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import createHttpError from "http-errors";
 
-import itemRoutes from './routes/items.js';
-import userRoutes from './routes/users.js';
+import itemRoutes from "./routes/items.js";
+import userRoutes from "./routes/users.js";
 
 dotenv.config({ silent: true });
 
@@ -17,16 +17,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Guitar Practice Assistant API!');
+app.get("/", (req, res) => {
+  res.send("Welcome to the Guitar Practice Assistant API!");
 });
 
-app.use('/items', itemRoutes);
-app.use('/user', userRoutes);
+app.use("/items", itemRoutes);
+app.use("/user", userRoutes);
 
 //404 handler
 app.use((req, res, next) => {
-  next(createHttpError(404, 'Not Found!'));
+  next(createHttpError(404, "Not Found!"));
 });
 
 //Error handler
@@ -42,12 +42,7 @@ app.use((error, req, res, next) => {
 
 //Connect to DB
 mongoose
-  .connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     app.listen(port, () => console.log(`Server is up on port ${port}`));
   })

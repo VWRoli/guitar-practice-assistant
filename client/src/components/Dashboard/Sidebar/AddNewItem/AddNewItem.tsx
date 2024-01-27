@@ -21,7 +21,6 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
 
   useEffect(() => {
     if (item) setItemData(item);
-    console.log(item);
   }, [item, setItemData]);
 
   const dispatch = useDispatch();
@@ -40,15 +39,15 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
     clear();
   };
   return (
-    <form className="new-practice-item" onSubmit={handleSubmit}>
+    <form className='new-practice-item' onSubmit={handleSubmit}>
       <div className={visible ? "form-group" : "form-group hidden"}>
-        <div className="title-group">
-          <label htmlFor="title">Title</label>
+        <div className='title-group'>
+          <label htmlFor='title'>Title</label>
           <input
-            type="text"
-            name="title"
+            type='text'
+            name='title'
             value={itemData.title}
-            placeholder="Song, excercise, chord..."
+            placeholder='Song, excercise, chord...'
             required
             onChange={(e) =>
               setItemData({ ...itemData, title: e.target.value })
@@ -56,15 +55,15 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
           />
         </div>
 
-        <div className="duration-group">
-          <label htmlFor="duration">Duration</label>
+        <div className='duration-group'>
+          <label htmlFor='duration'>Duration</label>
           <input
-            type="number"
-            name="duration"
+            type='number'
+            name='duration'
             value={itemData.duration}
-            placeholder="Min"
-            min="1"
-            max="60"
+            placeholder='Min'
+            min='1'
+            max='60'
             required
             onChange={(e) =>
               setItemData({ ...itemData, duration: parseInt(e.target.value) })
@@ -72,25 +71,24 @@ const AddNewItem: React.FC<Props> = ({ clear, setItemData, itemData }) => {
           />
         </div>
 
-        <div className="type-group">
-          <label htmlFor="type">Type</label>
+        <div className='type-group'>
+          <label htmlFor='type'>Type</label>
           <select
-            name="type"
+            name='type'
             value={itemData.type}
-            onChange={(e) =>
-              setItemData({ ...itemData, type: e.target.value })
-            }>
-            <option value="excercise">Excercise</option>
-            <option value="song">Song</option>
+            onChange={(e) => setItemData({ ...itemData, type: e.target.value })}
+          >
+            <option value='excercise'>Excercise</option>
+            <option value='song'>Song</option>
           </select>
         </div>
 
-        <button type="submit" id="add-new-item-btn">
+        <button type='submit' id='add-new-item-btn'>
           {currentId ? "Edit" : "Add"}
         </button>
       </div>
 
-      <div className="slide-btn" onClick={() => setVisible(!visible)}>
+      <div className='slide-btn' onClick={() => setVisible(!visible)}>
         {visible ? <FaChevronUp /> : <FaChevronDown />}
       </div>
     </form>
