@@ -1,6 +1,6 @@
-import { ItemType } from '../components/Dashboard/Sidebar/Sidebar';
-import { ActionType } from '../constants/actionTypes';
-import { AuthDataType } from '../reducers/auth';
+import { ItemType } from "../components/Dashboard/Sidebar/Sidebar";
+import { ActionType } from "../constants/actionTypes";
+import { AuthDataType } from "../reducers/auth";
 
 interface FetchItemsAction {
   type: ActionType.FETCH_ITEMS;
@@ -40,7 +40,7 @@ interface SetCurrentIdAction {
 }
 interface FetchUserAction {
   type: ActionType.FETCH_USER;
-  payload: AuthDataType['user'];
+  payload: AuthDataType["user"];
 }
 
 interface SetUserErrorAction {
@@ -67,6 +67,7 @@ interface SetAuthErrorAction {
 }
 interface SetAuthLoadingAction {
   type: ActionType.SET_AUTH_LOADING;
+  payload: boolean;
 }
 
 interface LogoutAction {

@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { signin, signup } from '../../actions/auth';
-import { Link } from 'react-router-dom';
-import { State } from '../../reducers';
-import validateForm from './validateForm';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { signin, signup } from "../../actions/auth";
+import { Link } from "react-router-dom";
+import { State } from "../../reducers";
+import validateForm from "./validateForm";
 //Components
-import Input from './Input';
-import Message, { msgType } from '../utils/Message/Message';
-import Button from '../utils/Button/Button';
-import LoginSwitch from './LoginSwitch';
-import Loading from '../utils/Loading/Loading';
-import Logo from '../utils/Logo/Logo';
+import Input from "./Input";
+import Message, { msgType } from "../utils/Message/Message";
+import Button from "../utils/Button/Button";
+import LoginSwitch from "./LoginSwitch";
+import Loading from "../utils/Loading/Loading";
+import Logo from "../utils/Logo/Logo";
 
 export type formDataType = {
   username: string;
@@ -21,10 +21,10 @@ export type formDataType = {
 };
 
 const initialState: formDataType = {
-  username: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
 };
 
 export interface AuthPropType {
@@ -65,29 +65,29 @@ const Auth: React.FC<AuthPropType> = ({
   };
 
   return (
-    <section id="auth">
-      <div className="auth__bg-overlay"></div>
-      <header className="auth__main-header">
-        <Link to="/">
-          <Logo accentText="Guitar" postText="PA" />
+    <section id='auth'>
+      <div className='auth__bg-overlay'></div>
+      <header className='auth__main-header'>
+        <Link to='/'>
+          <Logo accentText='Guitar' postText='PA' />
         </Link>
       </header>
-      <form className="auth__form" onSubmit={handleSubmit}>
+      <form className='auth__form' onSubmit={handleSubmit}>
         <header>
           <Logo
-            preText={isSignup ? 'Sign up for ' : 'Log in to '}
-            accentText="Guitar"
-            postText="PA"
+            preText={isSignup ? "Sign up for " : "Log in to "}
+            accentText='Guitar'
+            postText='PA'
           />
         </header>
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="form-body">
+          <div className='form-body'>
             <Input
-              name="username"
-              type="text"
-              placeholder="Username"
+              name='username'
+              type='text'
+              placeholder='Username'
               autoFocus={true}
               handleChange={handleChange}
               error={formErrors?.username}
@@ -97,9 +97,9 @@ const Auth: React.FC<AuthPropType> = ({
 
             {isSignup && (
               <Input
-                name="email"
-                type="email"
-                placeholder="Email"
+                name='email'
+                type='email'
+                placeholder='Email'
                 handleChange={handleChange}
                 error={formErrors?.email}
                 value={formData.email!}
@@ -108,9 +108,9 @@ const Auth: React.FC<AuthPropType> = ({
             )}
 
             <Input
-              name="password"
-              type="password"
-              placeholder="Password"
+              name='password'
+              type='password'
+              placeholder='Password'
               handleChange={handleChange}
               error={formErrors?.password}
               value={formData.password}
@@ -119,9 +119,9 @@ const Auth: React.FC<AuthPropType> = ({
 
             {isSignup && (
               <Input
-                name="confirmPassword"
-                type="password"
-                placeholder="Confirm Password"
+                name='confirmPassword'
+                type='password'
+                placeholder='Confirm Password'
                 handleChange={handleChange}
                 error={formErrors?.confirmPassword}
                 value={formData.confirmPassword!}
@@ -131,7 +131,7 @@ const Auth: React.FC<AuthPropType> = ({
             {errorMsg && <Message msg={errorMsg} msgRole={msgType.ERROR} />}
 
             <Button
-              text={isSignup ? 'Create my account' : 'Log in to my account'}
+              text={isSignup ? "Create my account" : "Log in to my account"}
               link={false}
             />
 
