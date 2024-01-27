@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import PracticeItem from '../models/practiceItem.js';
-import createHttpError from 'http-errors';
+import mongoose from "mongoose";
+import PracticeItem from "../models/practiceItem.js";
+import createHttpError from "http-errors";
 
 export const getItems = async (req, res, next) => {
   try {
@@ -33,11 +33,11 @@ export const deleteItem = async (req, res, next) => {
   const { id } = req.params;
   try {
     if (!mongoose.Types.ObjectId.isValid(id))
-      throw createHttpError(404, 'No item with that ID.');
+      throw createHttpError(404, "No item with that ID.");
 
-    await PracticeItem.findByIdAndRemove(id);
+    await PracticeItem.findByIdAndDelete(id);
 
-    res.json({ message: 'Item deleted successfully' });
+    res.json({ message: "Item deleted successfully" });
   } catch (error) {
     next(error);
   }
@@ -49,7 +49,7 @@ export const updateItem = async (req, res, next) => {
     const item = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(_id))
-      throw createHttpError(404, 'No item with that ID.');
+      throw createHttpError(404, "No item with that ID.");
 
     const updatedItem = await PracticeItem.findByIdAndUpdate(_id, item, {
       new: true,
