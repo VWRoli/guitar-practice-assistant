@@ -2,7 +2,13 @@
 
 <img src="client/src/assets/guitar-pa.png"/>
 
-[Live Demo](https://guitar-pa.netlify.app/) (username: demoUser1 password: 123456Aa!)
+[Live Demo](https://guitar-pa.netlify.app/) (username: demoUser1 password: 123456Aa!).
+
+### The backend is hosted on render.com
+
+> Render spins down a Free web service that goes 15 minutes without receiving inbound traffic. Render spins the service back up whenever it next receives a request to process.
+
+> Spinning up a service takes a few seconds, which causes a noticeable delay for incoming requests until the service is back up and running. For example, a browser page load will hang momentarily.
 
 ## Intro
 
