@@ -1,8 +1,8 @@
-import * as api from '../api';
-import { Dispatch } from 'redux';
-import { ActionType } from '../constants/actionTypes';
-import { Action } from './Types';
-import { formDataType } from '../components/Auth/Auth';
+import * as api from "../api";
+import { Dispatch } from "redux";
+import { ActionType } from "../constants/actionTypes";
+import { Action } from "./Types";
+import { formDataType } from "../components/Auth/Auth";
 
 export const signin =
   (formData: formDataType, history: any) =>
@@ -13,9 +13,9 @@ export const signin =
       const { data } = await api.signIn(formData);
 
       dispatch({ type: ActionType.AUTH, payload: data });
-      history.push('/dashboard');
+      history.push("/dashboard");
       dispatch({ type: ActionType.SET_AUTH_LOADING, payload: false });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: ActionType.SET_ERROR,
         payload: error.response.data.error.message,
@@ -30,8 +30,8 @@ export const signup =
 
       dispatch({ type: ActionType.AUTH, payload: data });
 
-      history.push('/dashboard');
-    } catch (error) {
+      history.push("/dashboard");
+    } catch (error: any) {
       dispatch({
         type: ActionType.SET_ERROR,
         payload: error.response.data.error.message,
@@ -45,7 +45,7 @@ export const logout = () => async (dispatch: Dispatch<Action>) => {
   } catch (error) {
     dispatch({
       type: ActionType.SET_ERROR,
-      payload: 'Error logging out',
+      payload: "Error logging out",
     });
   }
 };
